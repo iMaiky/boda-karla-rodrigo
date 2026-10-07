@@ -1,6 +1,7 @@
 const opening = document.getElementById("opening");
 const enterButton = document.getElementById("enter");
 const site = document.getElementById("site");
+
 const music = document.getElementById("bgMusic");
 const musicControl = document.getElementById("musicControl");
 const songPlay = document.getElementById("songPlay");
@@ -9,209 +10,333 @@ const songSection = document.querySelector(".song");
 const weddingDate = new Date("2026-12-12T13:00:00-04:00");
 
 let audioStarted = false;
-let audioContext = null;
-let gainNode = null;
-let mediaSource = null;
-let fadeFrame = null;
+let fadeAnimation = null;
 
-function setupAudioGraph() {
-  if (audioContext) return;
+// ==========================================
+// FADE NATIVO DE VOLUMEN
+// ==========================================
 
-  const AudioContextClass = window.AudioContext || window.webkitAudioContext;
-  if (!AudioContextClass) return;
+function fadeVolume(target, duration = 7000) {
 
-  audioContext = new AudioContextClass();
-  mediaSource = audioContext.createMediaElementSource(music);
-  gainNode = audioContext.createGain();
-
-  gainNode.gain.setValueAtTime(0.0001, audioContext.currentTime);
-  mediaSource.connect(gainNode);
-  gainNode.connect(audioContext.destination);
-}
-
-function fadeVolume(target, duration = 6500) {
-  if (!gainNode || !audioContext) {
-    music.volume = Math.min(Math.max(target, 0), 1);
-    return;
+  if (fadeAnimation) {
+    cancelAnimationFrame(fadeAnimation);
   }
 
-  if (fadeFrame) cancelAnimationFrame(fadeFrame);
+  const startVolume = music.volume;
+  const startTime = performance.now();
 
-  const start = gainNode.gain.value;
-  const startedAt = performance.now();
+  function animate(currentTime) {
 
-  function step(now) {
-    const t = Math.min((now - startedAt) / duration, 1);
-    const eased = 1 - Math.pow(1 - t, 3);
-    const value = start + (target - start) * eased;
+    const elapsed = currentTime - startTime;
+    const progress = Math.min(elapsed / duration, 1);
 
-    gainNode.gain.setValueAtTime(Math.max(value, 0.0001), audioContext.currentTime);
+    // Curva suave
+    const eased = 1 - Math.pow(1 - progress, 3);
 
-    if (t < 1) {
-      fadeFrame = requestAnimationFrame(step);
+    music.volume =
+      startVolume + (target - startVolume) * eased;
+
+    if (progress < 1) {
+      fadeAnimation = requestAnimationFrame(animate);
+    } else {
+      music.volume = target;
     }
   }
 
-  fadeFrame = requestAnimationFrame(step);
+  fadeAnimation = requestAnimationFrame(animate);
 }
+
+// ==========================================
+// INICIAR MÚSICA
+// ==========================================
 
 async function startMusicWithFade() {
-  setupAudioGraph();
+
+  music.volume = 0;
 
   try {
-    if (audioContext && audioContext.state === "suspended") {
-      await audioContext.resume();
-    }
 
-    if (!audioContext) {
-      music.volume = 0;
-    }
+    /*
+      play() se ejecuta directamente después
+      de la interacción del usuario.
+    */
 
     await music.play();
-
-    if (audioContext) {
-      gainNode.gain.setValueAtTime(0.0001, audioContext.currentTime);
-      fadeVolume(0.88, 7000);
-    } else {
-      const started = performance.now();
-      const duration = 7000;
-
-      function nativeFade(now) {
-        const t = Math.min((now - started) / duration, 1);
-        const eased = 1 - Math.pow(1 - t, 3);
-        music.volume = 0.88 * eased;
-        if (t < 1) requestAnimationFrame(nativeFade);
-      }
-
-      requestAnimationFrame(nativeFade);
-    }
 
     audioStarted = true;
-    musicControl.classList.add("visible", "playing");
-    songSection.classList.add("playing");
+
+    musicControl.classList.add("visible");
+    musicControl.classList.add("playing");
+
+    if (songSection) {
+      songSection.classList.add("playing");
+    }
+
+    // 7 segundos de entrada suave
+    fadeVolume(0.88, 7000);
+
   } catch (error) {
-    console.warn("La reproducción necesita otro toque en este dispositivo.", error);
+
+    console.warn(
+      "La música no pudo iniciarse:",
+      error
+    );
+
+    /*
+      IMPORTANTÍSIMO:
+      Aunque la música falle, la invitación
+      DEBE abrirse.
+    */
+
+    audioStarted = false;
   }
 }
 
-async function pauseMusic() {
-  if (!audioStarted) return;
-  if (fadeFrame) cancelAnimationFrame(fadeFrame);
+// ==========================================
+// PAUSAR
+// ==========================================
 
-  if (gainNode && audioContext) {
-    fadeVolume(0.0001, 500);
-    setTimeout(() => music.pause(), 520);
-  } else {
-    music.pause();
+function pauseMusic() {
+
+  if (fadeAnimation) {
+    cancelAnimationFrame(fadeAnimation);
   }
+
+  fadeVolume(0, 500);
+
+  setTimeout(() => {
+    music.pause();
+  }, 520);
 
   musicControl.classList.remove("playing");
-  songSection.classList.remove("playing");
+
+  if (songSection) {
+    songSection.classList.remove("playing");
+  }
 }
 
+// ==========================================
+// REANUDAR
+// ==========================================
+
 async function resumeMusic() {
+
   try {
-    if (audioContext && audioContext.state === "suspended") {
-      await audioContext.resume();
-    }
+
+    music.volume = 0;
 
     await music.play();
 
-    if (gainNode && audioContext) {
-      fadeVolume(0.88, 900);
-    } else {
-      music.volume = 0;
-      const started = performance.now();
-
-      function nativeResume(now) {
-        const t = Math.min((now - started) / 900, 1);
-        music.volume = 0.88 * t;
-        if (t < 1) requestAnimationFrame(nativeResume);
-      }
-
-      requestAnimationFrame(nativeResume);
-    }
+    audioStarted = true;
 
     musicControl.classList.add("playing");
-    songSection.classList.add("playing");
+
+    if (songSection) {
+      songSection.classList.add("playing");
+    }
+
+    fadeVolume(0.88, 900);
+
   } catch (error) {
-    console.warn(error);
+
+    console.warn(
+      "No se pudo reanudar la música:",
+      error
+    );
+
   }
 }
 
-enterButton.addEventListener("click", async () => {
-  await startMusicWithFade();
+// ==========================================
+// BOTÓN PRINCIPAL
+// ==========================================
+
+enterButton.addEventListener("click", () => {
+
+  /*
+    Primero cerramos la pantalla de bienvenida.
+    Así la invitación abre incluso si el audio
+    tuviera algún problema.
+  */
 
   opening.classList.add("closed");
+
   document.body.classList.remove("lock");
+
   site.classList.add("visible");
 
+  /*
+    La llamada ocurre como consecuencia
+    directa del primer toque.
+  */
+
+  startMusicWithFade();
+
+  /*
+    Activamos las animaciones.
+  */
+
   setTimeout(() => {
-    document.querySelectorAll(".reveal").forEach(el => el.classList.add("show"));
+
+    document
+      .querySelectorAll(".reveal")
+      .forEach(element => {
+        element.classList.add("show");
+      });
+
   }, 300);
+
 });
+
+// ==========================================
+// CONTROL FLOTANTE DE MÚSICA
+// ==========================================
 
 musicControl.addEventListener("click", async () => {
+
   if (music.paused) {
     await resumeMusic();
   } else {
-    await pauseMusic();
+    pauseMusic();
   }
+
 });
+
+// ==========================================
+// BOTÓN DE LA SECCIÓN "NUESTRA CANCIÓN"
+// ==========================================
 
 songPlay.addEventListener("click", async () => {
+
   if (music.paused) {
     await resumeMusic();
   } else {
-    await pauseMusic();
+    pauseMusic();
   }
+
 });
 
-// Countdown
-function updateCountdown() {
-  const now = new Date();
-  const diff = weddingDate - now;
+// ==========================================
+// CUENTA REGRESIVA
+// ==========================================
 
-  if (diff <= 0) {
-    ["days", "hours", "minutes", "seconds"].forEach(id => {
-      document.getElementById(id).textContent = "0".padStart(id === "days" ? 3 : 2, "0");
-    });
+function updateCountdown() {
+
+  const now = new Date();
+  const difference = weddingDate - now;
+
+  if (difference <= 0) {
+
+    document.getElementById("days").textContent = "000";
+    document.getElementById("hours").textContent = "00";
+    document.getElementById("minutes").textContent = "00";
+    document.getElementById("seconds").textContent = "00";
+
     return;
   }
 
-  const days = Math.floor(diff / 86400000);
-  const hours = Math.floor((diff / 3600000) % 24);
-  const minutes = Math.floor((diff / 60000) % 60);
-  const seconds = Math.floor((diff / 1000) % 60);
+  const days =
+    Math.floor(
+      difference /
+      (1000 * 60 * 60 * 24)
+    );
 
-  document.getElementById("days").textContent = String(days).padStart(3, "0");
-  document.getElementById("hours").textContent = String(hours).padStart(2, "0");
-  document.getElementById("minutes").textContent = String(minutes).padStart(2, "0");
-  document.getElementById("seconds").textContent = String(seconds).padStart(2, "0");
+  const hours =
+    Math.floor(
+      (difference /
+        (1000 * 60 * 60)) %
+        24
+    );
+
+  const minutes =
+    Math.floor(
+      (difference /
+        (1000 * 60)) %
+        60
+    );
+
+  const seconds =
+    Math.floor(
+      (difference / 1000) %
+        60
+    );
+
+  document.getElementById("days").textContent =
+    String(days).padStart(3, "0");
+
+  document.getElementById("hours").textContent =
+    String(hours).padStart(2, "0");
+
+  document.getElementById("minutes").textContent =
+    String(minutes).padStart(2, "0");
+
+  document.getElementById("seconds").textContent =
+    String(seconds).padStart(2, "0");
 }
 
 updateCountdown();
-setInterval(updateCountdown, 1000);
 
-// Reveal on scroll
-const observer = new IntersectionObserver(
-  entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("show");
-        observer.unobserve(entry.target);
-      }
-    });
-  },
-  { threshold: 0.14 }
+setInterval(
+  updateCountdown,
+  1000
 );
 
-document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
+// ==========================================
+// ANIMACIONES AL HACER SCROLL
+// ==========================================
 
-// Accessibility / reduced motion
-if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-  document.querySelectorAll("*").forEach(el => {
-    el.style.scrollBehavior = "auto";
+const observer =
+  new IntersectionObserver(
+
+    entries => {
+
+      entries.forEach(entry => {
+
+        if (entry.isIntersecting) {
+
+          entry.target.classList.add("show");
+
+          observer.unobserve(
+            entry.target
+          );
+
+        }
+
+      });
+
+    },
+
+    {
+      threshold: 0.14
+    }
+
+  );
+
+document
+  .querySelectorAll(".reveal")
+  .forEach(element => {
+
+    observer.observe(element);
+
   });
-}
 
+// ==========================================
+// REDUCED MOTION
+// ==========================================
+
+if (
+  window.matchMedia(
+    "(prefers-reduced-motion: reduce)"
+  ).matches
+) {
+
+  document
+    .querySelectorAll("*")
+    .forEach(element => {
+
+      element.style.scrollBehavior =
+        "auto";
+
+    });
+
+}
