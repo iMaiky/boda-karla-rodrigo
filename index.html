@@ -1,1 +1,365 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#17130f">
+  <meta name="description" content="Invitación de boda de Rodrigo & Karla - 12 de diciembre de 2026">
+  <title>Rodrigo & Karla | 12.12.2026</title>
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- PANTALLA DE APERTURA -->
+  <div id="opening-screen">
+    <div class="opening-content">
+      <div class="small-caps">Una historia. Un amor. Un para siempre.</div>
+
+      <h1>
+        <span>Rodrigo</span>
+        <em>&</em>
+        <span>Karla</span>
+      </h1>
+
+      <div class="opening-date">12 · 12 · 2026</div>
+
+      <button id="enter-button">
+        Tocar para comenzar
+      </button>
+    </div>
+  </div>
+
+  <!-- BOTÓN DE MÚSICA -->
+  <button id="music-toggle" class="music-button" aria-label="Activar o pausar música">
+    ♪
+  </button>
+
+  <!-- AUDIO -->
+  <audio id="background-music" loop preload="metadata">
+    <source src="audio/nuestra-cancion.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- CONTENIDO PRINCIPAL -->
+  <main id="main-content">
+
+    <!-- HERO -->
+    <section class="hero section-dark">
+      <div class="hero-overlay"></div>
+
+      <div class="hero-content reveal">
+        <p class="eyebrow">Nos casamos</p>
+
+        <h2>
+          Rodrigo
+          <span>&</span>
+          Karla
+        </h2>
+
+        <div class="divider"></div>
+
+        <p class="hero-date">12 DE DICIEMBRE DE 2026</p>
+
+        <p class="hero-phrase">
+          Hay historias que comienzan con una mirada
+          y terminan convirtiéndose en un para siempre.
+        </p>
+
+        <a href="#story" class="scroll-link">
+          Descubre nuestra historia
+          <span>↓</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- HISTORIA -->
+    <section id="story" class="section light-section">
+      <div class="container narrow reveal">
+        <p class="eyebrow gold">Nuestra historia</p>
+
+        <h2 class="section-title">
+          Dos caminos,<br>
+          un mismo destino.
+        </h2>
+
+        <p class="section-text">
+          Hoy queremos compartir contigo uno de los días más importantes
+          de nuestras vidas: el día en que decidimos unir nuestros caminos
+          y comenzar juntos una nueva historia.
+        </p>
+
+        <div class="story-symbol">♡</div>
+
+        <p class="section-text">
+          Porque algunos encuentros llegan por casualidad...
+          y terminan convirtiéndose en eternidad.
+        </p>
+      </div>
+    </section>
+
+    <!-- FRASE -->
+    <section class="quote-section reveal">
+      <div class="quote-overlay"></div>
+
+      <div class="quote-content">
+        <span class="quote-mark">“</span>
+
+        <p>
+          Y entre tantas personas en el mundo,
+          nos encontramos.
+        </p>
+
+        <span class="quote-mark closing">”</span>
+      </div>
+    </section>
+
+    <!-- PADRES -->
+    <section class="section light-section">
+      <div class="container reveal">
+        <p class="eyebrow gold">Con la bendición de nuestros padres</p>
+
+        <h2 class="section-title">
+          Junto a quienes<br>
+          nos enseñaron a amar.
+        </h2>
+
+        <div class="parents-grid">
+
+          <div class="parents-card">
+            <span class="parents-label">Padres del novio</span>
+
+            <h3>Sergio Choque Condori</h3>
+            <p>e</p>
+            <h3>Inés Luna Flores</h3>
+          </div>
+
+          <div class="parents-card">
+            <span class="parents-label">Padres de la novia</span>
+
+            <h3>Jaime Vargas Quintanilla</h3>
+            <p>e</p>
+            <h3>Vicenta Zenteno Vargas</h3>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- CEREMONIA -->
+    <section class="event-section dark-section reveal">
+      <div class="container narrow">
+        <p class="eyebrow">Ceremonia religiosa</p>
+
+        <div class="event-time">13:00</div>
+
+        <div class="event-line"></div>
+
+        <h2>Capilla Católica<br>Virgen de Guadalupe</h2>
+
+        <p class="event-place">KM 15</p>
+
+        <a
+          class="gold-button"
+          href="https://www.google.com/maps/search/?api=1&query=Capilla%20Catolica%20Virgen%20de%20Guadalupe%20Km%2015"
+          target="_blank"
+          rel="noopener noreferrer">
+          Ver ubicación
+        </a>
+      </div>
+    </section>
+
+    <!-- RECEPCIÓN -->
+    <section class="section reception-section">
+      <div class="container narrow reveal">
+
+        <p class="eyebrow gold">Después de la ceremonia</p>
+
+        <h2 class="section-title">
+          Celebremos<br>
+          juntos.
+        </h2>
+
+        <div class="event-time dark-text">16:00</div>
+
+        <div class="mini-divider"></div>
+
+        <h3 class="reception-title">Casa Quinta Reinaga</h3>
+
+        <p class="section-text">
+          Kilómetro 20<br>
+          Carretera Antigua a Cochabamba
+        </p>
+
+        <a
+          class="dark-button"
+          href="https://www.google.com/maps/search/?api=1&query=Casa%20Quinta%20Reinaga%20Kilometro%2020%20Carretera%20Antigua%20a%20Cochabamba"
+          target="_blank"
+          rel="noopener noreferrer">
+          Cómo llegar
+        </a>
+
+      </div>
+    </section>
+
+    <!-- CUENTA REGRESIVA -->
+    <section class="countdown-section dark-section">
+      <div class="container narrow reveal">
+
+        <p class="eyebrow">El gran día se acerca</p>
+
+        <h2 class="section-title light-title">
+          Cuenta regresiva
+        </h2>
+
+        <div class="countdown">
+
+          <div class="count-item">
+            <span id="days">000</span>
+            <small>Días</small>
+          </div>
+
+          <div class="count-item">
+            <span id="hours">00</span>
+            <small>Horas</small>
+          </div>
+
+          <div class="count-item">
+            <span id="minutes">00</span>
+            <small>Minutos</small>
+          </div>
+
+          <div class="count-item">
+            <span id="seconds">00</span>
+            <small>Segundos</small>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- GALERÍA PROVISIONAL -->
+    <section class="section light-section">
+      <div class="container reveal">
+
+        <p class="eyebrow gold">Nuestros momentos</p>
+
+        <h2 class="section-title">
+          Un pequeño vistazo<br>
+          a nuestra historia.
+        </h2>
+
+        <div class="gallery">
+
+          <div class="photo photo-1">
+            <span>Foto 01</span>
+          </div>
+
+          <div class="photo photo-2">
+            <span>Foto 02</span>
+          </div>
+
+          <div class="photo photo-3">
+            <span>Foto 03</span>
+          </div>
+
+          <div class="photo photo-4">
+            <span>Foto 04</span>
+          </div>
+
+          <div class="photo photo-5">
+            <span>Foto 05</span>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- CANCIÓN -->
+    <section class="song-section dark-section">
+      <div class="container narrow reveal">
+
+        <p class="eyebrow">Nuestra canción</p>
+
+        <div class="song-icon">♪</div>
+
+        <h2 class="section-title light-title">
+          Una canción que<br>
+          nos representa.
+        </h2>
+
+        <p class="section-text light-text">
+          Pulsa el botón de música para escucharla mientras recorres
+          nuestra invitación.
+        </p>
+
+      </div>
+    </section>
+
+    <!-- CONFIRMACIÓN -->
+    <section class="section rsvp-section">
+      <div class="container narrow reveal">
+
+        <p class="eyebrow gold">Tu presencia lo hará aún más especial</p>
+
+        <h2 class="section-title">
+          ¿Nos acompañas?
+        </h2>
+
+        <p class="section-text">
+          Nos encantaría celebrar este día contigo.
+        </p>
+
+        <a
+          class="gold-button dark-gold"
+          href="https://wa.me/?text=Hola%20Rodrigo%20y%20Karla%20%F0%9F%98%8A%20Quiero%20confirmar%20mi%20asistencia%20a%20su%20boda%20del%2012%20de%20diciembre%20de%202026."
+          target="_blank"
+          rel="noopener noreferrer">
+          Confirmar asistencia
+        </a>
+
+      </div>
+    </section>
+
+    <!-- CIERRE -->
+    <footer class="final-section">
+      <div class="final-overlay"></div>
+
+      <div class="final-content reveal">
+
+        <p class="eyebrow">Para siempre</p>
+
+        <h2>
+          Rodrigo
+          <span>&</span>
+          Karla
+        </h2>
+
+        <div class="divider"></div>
+
+        <p class="final-date">12 · 12 · 2026</p>
+
+        <p class="thanks">
+          Gracias por ser parte de nuestra historia.
+        </p>
+
+        <div class="brand">
+          <span>Diseño & experiencia digital</span>
+          <strong>MAIKY TECH</strong>
+          <small>Tecnología que simplifica tu trabajo</small>
+        </div>
+
+      </div>
+    </footer>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
