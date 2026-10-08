@@ -1,252 +1,225 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#0b0908" />
-  <meta name="description" content="Rodrigo & Karla — 12 de diciembre de 2026" />
-  <meta property="og:title" content="Rodrigo & Karla | 12.12.2026" />
-  <meta property="og:description" content="Una historia. Un amor. Un para siempre." />
-  <title>Rodrigo & Karla | 12.12.2026</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f6f3ec">
+  <meta name="description" content="Invitación de boda de Rodrigo & Karla — 12 de diciembre de 2026.">
+  <title>Rodrigo & Karla · 12.12.2026</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Allura&family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
+<body class="preopen">
 
-<body>
-  <div class="noise" aria-hidden="true"></div>
+  <div class="ambient-particles" aria-hidden="true"></div>
 
-  <!-- Pantalla de entrada -->
-  <section id="opening" class="opening">
-    <div class="opening-image" aria-hidden="true"></div>
-    <div class="opening-vignette" aria-hidden="true"></div>
-    <div class="gold-dust" aria-hidden="true"></div>
+  <!-- Pantalla inicial -->
+  <div class="opening" id="opening" aria-label="Abrir invitación">
+    <div class="opening-marble"></div>
+    <div class="botanical botanical-left" aria-hidden="true">
+      <svg viewBox="0 0 240 420" role="presentation">
+        <path d="M12 408 C 84 330, 94 240, 136 128 C 154 79, 187 34, 218 8" class="branch"/>
+        <g class="leaf-group">
+          <path d="M75 330 C40 337, 22 319, 22 286 C54 289, 72 303, 75 330Z"/>
+          <path d="M94 279 C55 279, 34 254, 40 220 C72 225, 89 242, 94 279Z"/>
+          <path d="M111 226 C76 219, 64 192, 76 161 C107 172, 118 194, 111 226Z"/>
+          <path d="M129 171 C103 158, 99 134, 116 111 C141 127, 147 149, 129 171Z"/>
+          <path d="M151 118 C137 94, 148 72, 170 60 C182 83, 177 103, 151 118Z"/>
+          <path d="M168 80 C192 57, 218 59, 235 77 C216 95, 191 96, 168 80Z"/>
+        </g>
+      </svg>
+    </div>
+    <div class="botanical botanical-right" aria-hidden="true">
+      <svg viewBox="0 0 240 420" role="presentation">
+        <path d="M228 408 C 156 330, 146 240, 104 128 C 86 79, 53 34, 22 8" class="branch"/>
+        <g class="leaf-group">
+          <path d="M165 330 C200 337, 218 319, 218 286 C186 289, 168 303, 165 330Z"/>
+          <path d="M146 279 C185 279, 206 254, 200 220 C168 225, 151 242, 146 279Z"/>
+          <path d="M129 226 C164 219, 176 192, 164 161 C133 172, 122 194, 129 226Z"/>
+          <path d="M111 171 C137 158, 141 134, 124 111 C99 127, 93 149, 111 171Z"/>
+          <path d="M89 118 C103 94, 92 72, 70 60 C58 83, 63 103, 89 118Z"/>
+          <path d="M72 80 C48 57, 22 59, 5 77 C24 95, 49 96, 72 80Z"/>
+        </g>
+      </svg>
+    </div>
 
-    <div class="opening-inner">
-      <p class="micro">Una historia · Un amor · Un para siempre</p>
-
-      <h1 class="opening-names">
-        <span>Rodrigo</span>
-        <i>&</i>
-        <span>Karla</span>
-      </h1>
-
-      <div class="opening-rule"></div>
-
-      <p class="opening-date">12 · 12 · 2026</p>
-
-      <button id="enter" class="enter-button" type="button">
-        <span class="enter-ring"><span>♡</span></span>
+    <div class="opening-content">
+      <div class="seal">R<span>&</span>K</div>
+      <p class="eyebrow">Con inmensa alegría en el corazón</p>
+      <h1><span>Rodrigo</span><em>&</em><span>Karla</span></h1>
+      <p class="opening-date">12 · DICIEMBRE · 2026</p>
+      <div class="opening-photo-wrap">
+        <div class="opening-photo"></div>
+        <div class="photo-frame"></div>
+      </div>
+      <p class="opening-message">Una historia de amor, una promesa y toda una vida por compartir.</p>
+      <button id="enter" class="primary-button" type="button">
         <span>Toca para comenzar</span>
-        <small>La música comenzará suavemente</small>
+        <small>La música de nuestra historia te espera</small>
       </button>
     </div>
-  </section>
+  </div>
 
-  <!-- Controles flotantes -->
-  <button id="musicControl" class="music-control" type="button" aria-label="Pausar música">
-    <span class="disc">♪</span>
-    <span class="music-bars" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+  <audio id="bgMusic" preload="auto" playsinline>
+    <source src="audio/nuestra-cancion.mp3" type="audio/mpeg">
+  </audio>
+
+  <button id="musicControl" class="music-control" type="button" aria-label="Pausar música" aria-pressed="false">
+    <span class="music-note">♪</span>
+    <span class="music-bars"><i></i><i></i><i></i><i></i></span>
   </button>
 
-  <main id="site" class="site">
+  <main id="site" class="site" aria-hidden="true">
 
-    <!-- HERO -->
-    <section class="hero">
-      <div class="hero-media" aria-hidden="true"></div>
-      <div class="hero-shade" aria-hidden="true"></div>
-      <div class="hero-frame" aria-hidden="true"></div>
-      <div class="hero-content reveal">
-        <p class="eyebrow">Nos casamos</p>
-        <h2>Rodrigo <span>&</span> Karla</h2>
-        <div class="gold-line"></div>
-        <p class="hero-date">12 DE DICIEMBRE DE 2026</p>
-        <p class="hero-copy">Después de compartir tantos capítulos, llegó el momento de escribir juntos el siguiente.</p>
+    <section class="hero section-reveal">
+      <div class="hero-image" role="img" aria-label="Rodrigo y Karla junto al mar"></div>
+      <div class="hero-wash"></div>
+      <div class="hero-copy">
+        <p class="eyebrow green">Nuestra boda</p>
+        <h2>Donde termina<br><span>el “yo”</span> y comienza<br>el “nosotros”.</h2>
+        <div class="ornament"><span></span><b>♡</b><span></span></div>
+        <p class="hero-subtitle">Rodrigo & Karla</p>
       </div>
-      <a class="scroll-cue" href="#intro" aria-label="Continuar">
-        <span>Descubre nuestra historia</span>
-        <b>↓</b>
-      </a>
+      <div class="hero-scroll">Desliza para descubrir <span>↓</span></div>
     </section>
 
-    <!-- INTRO -->
-    <section id="intro" class="section cream intro-section">
-      <div class="container split">
-        <div class="split-copy reveal">
-          <p class="eyebrow gold">Nuestra historia</p>
-          <h3>Dos caminos,<br><em>un mismo destino.</em></h3>
-          <p>
-            Hay encuentros que llegan sin avisar y terminan cambiándolo todo.
-            Hoy queremos compartir contigo el día en que Rodrigo y Karla
-            deciden convertir su historia en un para siempre.
-          </p>
-          <div class="signature">R &amp; K</div>
-        </div>
-
-        <figure class="portrait reveal">
-          <div class="portrait-inner">
-            <img src="images/historia.jpeg" alt="Rodrigo y Karla juntos en la playa" loading="lazy">
-          </div>
-          <figcaption>Un capítulo que nos trajo hasta aquí.</figcaption>
-        </figure>
+    <section class="paper-section section-reveal">
+      <div class="paper-texture"></div>
+      <div class="content-narrow">
+        <p class="eyebrow green">12 de diciembre de 2026</p>
+        <h2 class="script-title">Para siempre comienza hoy</h2>
+        <div class="olive-divider"><span></span></div>
+        <p class="body-copy">
+          Hay momentos que pasan una sola vez y quedan para toda la vida.
+          Este es uno de ellos. Con muchísimo amor, queremos compartir contigo
+          el día en que elegimos caminar juntos, de la mano, hacia nuestro para siempre.
+        </p>
       </div>
     </section>
 
-    <!-- FRASE -->
-    <section class="quote-section">
-      <div class="quote-bg" aria-hidden="true"></div>
-      <div class="quote-content reveal">
-        <span class="quote-mark">“</span>
-        <p>Y entre tantas personas en el mundo,<br><em>nos encontramos.</em></p>
-        <span class="quote-mark end">”</span>
+    <section class="memory-section section-reveal">
+      <div class="memory-photo" aria-hidden="true"></div>
+      <div class="memory-card">
+        <p class="eyebrow green">Un pedacito de nosotros</p>
+        <h2>Que bonito encontrarnos<br>en esta vida.</h2>
+        <p>
+          Queremos que cada detalle de este día nos recuerde algo sencillo:
+          amar también es elegirnos cada día.
+        </p>
       </div>
     </section>
 
-    <!-- PADRES -->
-    <section class="section cream">
-      <div class="container centered">
-        <p class="eyebrow gold reveal">Con la bendición de nuestros padres</p>
-        <h3 class="section-title reveal">Junto a quienes<br><em>nos enseñaron a amar.</em></h3>
-
+    <section class="parents-section paper-section section-reveal">
+      <div class="content-medium">
+        <p class="eyebrow green">Con la bendición de nuestros padres</p>
+        <h2 class="section-heading">De sus manos aprendimos<br><em>a amar.</em></h2>
         <div class="parents-grid">
-          <article class="parent-card reveal">
+          <article class="parent-card">
             <span>Padres del novio</span>
-            <h4>Sergio Choque Condori</h4>
-            <div class="and">y</div>
-            <h4>Inés Luna Flores</h4>
+            <h3>Sergio Choque Condori</h3>
+            <small>e</small>
+            <h3>Inés Luna Flores</h3>
           </article>
-
-          <article class="parent-card reveal">
+          <article class="parent-card">
             <span>Padres de la novia</span>
-            <h4>Jaime Vargas Quintanilla</h4>
-            <div class="and">y</div>
-            <h4>Vicenta Zenteno Vargas</h4>
+            <h3>Jaime Vargas Quintanilla</h3>
+            <small>e</small>
+            <h3>Vicenta Zenteno Vargas</h3>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- CEREMONIA -->
-    <section class="event dark">
-      <div class="event-glow" aria-hidden="true"></div>
-      <div class="container centered reveal">
-        <p class="eyebrow">Ceremonia religiosa</p>
-        <div class="event-time">13:00</div>
-        <div class="event-divider"></div>
-        <h3>Capilla Católica<br><em>Virgen de Guadalupe</em></h3>
-        <p class="event-meta">KM 15</p>
-        <a class="pill" href="https://www.google.com/maps/search/?api=1&query=Capilla%20Cat%C3%B3lica%20Virgen%20de%20Guadalupe%20Km%2015" target="_blank" rel="noopener">Ver ubicación</a>
-      </div>
-    </section>
+    <section class="events-section section-reveal">
+      <div class="content-medium">
+        <p class="eyebrow green">Celebremos este día</p>
+        <h2 class="section-heading">Los momentos que<br><em>viviremos juntos.</em></h2>
 
-    <!-- FOTO GRANDE -->
-    <section class="photo-story">
-      <div class="photo-story-image" aria-hidden="true"></div>
-      <div class="photo-story-overlay"></div>
-      <div class="photo-story-content reveal">
-        <p class="eyebrow">Un día para recordar</p>
-        <h3>Donde cada mirada<br><em>dice más que mil palabras.</em></h3>
-      </div>
-    </section>
+        <div class="event-grid">
+          <article class="event-card">
+            <div class="event-icon">✦</div>
+            <p class="event-label">Ceremonia religiosa</p>
+            <time>13:00 HRS</time>
+            <h3>Capilla Católica<br>Virgen de Guadalupe</h3>
+            <p>KM 15</p>
+            <a class="outline-button" href="https://www.google.com/maps/search/?api=1&query=Capilla%20Catolica%20Virgen%20de%20Guadalupe%20Km%2015" target="_blank" rel="noopener">Ver ubicación</a>
+          </article>
 
-    <!-- RECEPCIÓN -->
-    <section class="section cream reception">
-      <div class="container centered reveal">
-        <p class="eyebrow gold">Después de la ceremonia</p>
-        <h3 class="section-title">Celebremos<br><em>juntos.</em></h3>
-        <div class="reception-time">16:00</div>
-        <div class="small-gold-line"></div>
-        <h4>Casa Quinta Reinaga</h4>
-        <p>Kilómetro 20<br>Carretera Antigua a Cochabamba</p>
-        <a class="pill dark-pill" href="https://www.google.com/maps/search/?api=1&query=Casa%20Quinta%20Reinaga%20Kilometro%2020%20Carretera%20Antigua%20a%20Cochabamba" target="_blank" rel="noopener">Cómo llegar</a>
-      </div>
-    </section>
-
-    <!-- CUENTA REGRESIVA -->
-    <section class="countdown dark">
-      <div class="container centered reveal">
-        <p class="eyebrow">El gran día se acerca</p>
-        <h3 class="section-title light">Cuenta regresiva</h3>
-        <div class="count-grid">
-          <div class="count"><strong id="days">000</strong><span>Días</span></div>
-          <div class="count"><strong id="hours">00</strong><span>Horas</span></div>
-          <div class="count"><strong id="minutes">00</strong><span>Minutos</span></div>
-          <div class="count"><strong id="seconds">00</strong><span>Segundos</span></div>
-        </div>
-        <a class="calendar-link" href="rodrigo-karla.ics">＋ Agregar a mi calendario</a>
-      </div>
-    </section>
-
-    <!-- GALERÍA -->
-    <section class="section cream gallery-section">
-      <div class="container">
-        <div class="centered">
-          <p class="eyebrow gold reveal">Nuestros momentos</p>
-          <h3 class="section-title reveal">Pequeños recuerdos,<br><em>grandes historias.</em></h3>
-        </div>
-
-        <div class="gallery">
-          <figure class="gallery-item g1 reveal">
-            <img src="images/portada.jpeg" alt="Rodrigo y Karla al atardecer en la playa" loading="lazy">
-            <figcaption>Donde el mundo se detiene.</figcaption>
-          </figure>
-          <figure class="gallery-item g2 reveal">
-            <img src="images/historia.jpeg" alt="Rodrigo y Karla en la playa" loading="lazy">
-            <figcaption>Juntos, en cualquier lugar.</figcaption>
-          </figure>
+          <article class="event-card featured-event">
+            <div class="event-icon">♡</div>
+            <p class="event-label">Recepción</p>
+            <time>16:00 HRS</time>
+            <h3>Casa Quinta<br>Reinaga</h3>
+            <p>Kilómetro 20 · Carretera Antigua a Cochabamba</p>
+            <a class="outline-button" href="https://www.google.com/maps/search/?api=1&query=Casa%20Quinta%20Reinaga%20Kilometro%2020%20Carretera%20Antigua%20a%20Cochabamba" target="_blank" rel="noopener">Cómo llegar</a>
+          </article>
         </div>
       </div>
     </section>
 
-    <!-- CANCIÓN -->
-    <section class="song dark">
-      <div class="container centered reveal">
-        <p class="eyebrow">Nuestra canción</p>
-        <div class="vinyl"><span>♪</span></div>
-        <h3 class="section-title light">Así es<br><em>nuestro amor.</em></h3>
-        <p class="song-note">Déjala sonar mientras recorres nuestra historia.</p>
-        <button id="songPlay" class="pill" type="button">Reproducir / Pausar</button>
+    <section class="countdown-section section-reveal">
+      <div class="countdown-backdrop"></div>
+      <div class="content-medium countdown-content">
+        <p class="eyebrow">Esperando nuestro día</p>
+        <h2 class="script-title light">Falta poquito para decir<br>“sí, acepto”.</h2>
+        <div class="countdown" aria-label="Cuenta regresiva">
+          <div><b id="days">000</b><span>días</span></div>
+          <div><b id="hours">00</b><span>horas</span></div>
+          <div><b id="minutes">00</b><span>minutos</span></div>
+          <div><b id="seconds">00</b><span>segundos</span></div>
+        </div>
       </div>
     </section>
 
-    <!-- RSVP -->
-    <section class="section cream rsvp">
-      <div class="container centered reveal">
-        <p class="eyebrow gold">Tu presencia lo hará aún más especial</p>
-        <h3 class="section-title">¿Nos acompañas?</h3>
-        <p>Estamos preparando un día muy especial y nos encantará compartirlo contigo.</p>
-        <a id="rsvp" class="pill dark-pill" href="#" aria-disabled="true">Confirmar asistencia</a>
-        <small class="notice">Configuraremos este botón con el WhatsApp de confirmación.</small>
+    <section class="gallery-section paper-section section-reveal">
+      <div class="content-medium">
+        <p class="eyebrow green">Nuestros recuerdos</p>
+        <h2 class="section-heading">Dos fotos, mil recuerdos<br><em>y una historia por delante.</em></h2>
+        <div class="gallery-grid">
+          <figure class="gallery-photo tall"><img src="images/portada.jpeg" alt="Rodrigo y Karla al atardecer en la playa" loading="lazy"><figcaption>Donde todo se siente bonito.</figcaption></figure>
+          <figure class="gallery-photo small"><img src="images/historia.jpeg" alt="Rodrigo y Karla junto al mar" loading="lazy"><figcaption>Juntos, siempre.</figcaption></figure>
+        </div>
       </div>
     </section>
 
-    <!-- CIERRE -->
-    <footer class="final">
-      <div class="final-image" aria-hidden="true"></div>
-      <div class="final-shade" aria-hidden="true"></div>
+    <section class="song-section section-reveal">
+      <div class="song-aura"></div>
+      <div class="content-narrow song-content">
+        <div class="vinyl"><span>R♡K</span></div>
+        <p class="eyebrow green">Nuestra canción</p>
+        <h2 class="section-heading">Porque hay canciones<br>que se sienten <em>como nosotros.</em></h2>
+        <p class="body-copy light-copy">“Así Es Nuestro Amor”</p>
+        <button id="songPlay" class="primary-button light-button" type="button">▶ Escuchar nuestra canción</button>
+      </div>
+    </section>
 
-      <div class="final-content reveal">
-        <p class="eyebrow">Para siempre</p>
-        <h3>Rodrigo <span>&</span> Karla</h3>
-        <div class="gold-line"></div>
-        <p class="final-date">12 · 12 · 2026</p>
+    <section class="rsvp-section paper-section section-reveal">
+      <div class="content-narrow">
+        <p class="eyebrow green">Nos haría inmensamente felices</p>
+        <h2 class="script-title">Que estés con nosotros.</h2>
+        <div class="olive-divider"><span></span></div>
+        <p class="body-copy">Tu presencia hará que este día sea todavía más especial.</p>
+        <a class="primary-button dark-button" href="https://wa.me/?text=Hola%20Rodrigo%20y%20Karla%20%F0%9F%98%8A%20Quiero%20confirmar%20mi%20asistencia%20a%20su%20boda%20del%2012%20de%20diciembre%20de%202026." target="_blank" rel="noopener">Confirmar asistencia</a>
+      </div>
+    </section>
+
+    <footer class="footer-section section-reveal">
+      <div class="footer-photo"></div>
+      <div class="footer-wash"></div>
+      <div class="footer-content">
+        <p class="eyebrow">Con amor</p>
+        <h2>Rodrigo <span>&</span> Karla</h2>
+        <div class="ornament"><span></span><b>♡</b><span></span></div>
+        <p class="footer-date">12 · 12 · 2026</p>
         <p class="thanks">Gracias por ser parte de nuestra historia.</p>
-
-        <div class="brand">
-          <small>Diseño &amp; experiencia digital</small>
-          <strong>MAIKY TECH</strong>
-          <span>Tecnología que simplifica tu trabajo</span>
-        </div>
+        <div class="maiky-signature"><small>Diseño & experiencia digital</small><strong>MAIKY TECH</strong><span>Tecnología que simplifica tu trabajo</span></div>
       </div>
     </footer>
 
   </main>
-
-  <audio id="bgMusic" preload="auto" loop>
-    <source src="audio/nuestra-cancion.mp3" type="audio/mpeg">
-  </audio>
 
   <script src="script.js"></script>
 </body>
