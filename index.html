@@ -1,262 +1,335 @@
 <!doctype html>
 <html lang="es">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="theme-color" content="#f7f4ee">
-  <meta name="description" content="Invitación de boda de Rodrigo & Karla — 12 de diciembre de 2026.">
-  <title>Rodrigo & Karla · 12.12.2026</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Allura&family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#f5f0e6">
+<meta name="description" content="Invitación de boda de Rodrigo & Karla · 12 de diciembre de 2026">
+<title>Rodrigo & Karla · 12.12.2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Allura&family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ivory:#f7f3ea;
+  --paper:#fffdf8;
+  --paper2:#f0eadf;
+  --sage:#7b927f;
+  --sage2:#a9b7a3;
+  --deep:#385346;
+  --forest:#294236;
+  --gold:#b99a63;
+  --ink:#2d302b;
+  --muted:#77766f;
+  --line:rgba(57,83,70,.15);
+  --shadow:0 22px 70px rgba(38,55,45,.13);
+  --serif:"Cormorant Garamond",serif;
+  --script:"Allura",cursive;
+  --sans:"Montserrat",sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;color:var(--ink);font-family:var(--sans);background:var(--ivory);overflow-x:hidden}
+body.locked{overflow:hidden}
+a{text-decoration:none;color:inherit}
+button{font:inherit}
+img{display:block;max-width:100%}
+
+/* Paper / marble texture */
+body::before,body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:-2}
+body::before{opacity:.35;background:
+  radial-gradient(ellipse at 16% 18%,rgba(130,150,130,.08),transparent 28%),
+  radial-gradient(ellipse at 82% 22%,rgba(184,155,101,.06),transparent 24%),
+  repeating-linear-gradient(112deg,transparent 0 64px,rgba(92,104,93,.028) 64px 66px,transparent 66px 132px),
+  repeating-linear-gradient(76deg,transparent 0 84px,rgba(170,145,104,.024) 84px 86px,transparent 86px 170px)}
+body::after{z-index:-3;background:linear-gradient(180deg,#faf7ef 0%,#f4efe5 50%,#faf7ef 100%)}
+
+/* Opening */
+.opening{position:fixed;inset:0;z-index:5000;display:grid;place-items:center;padding:18px;background:rgba(247,243,234,.98);transition:opacity .9s ease,visibility .9s ease}
+.opening.out{opacity:0;visibility:hidden;pointer-events:none}
+.opening-wrap{position:relative;width:min(438px,94vw);min-height:min(720px,92svh);display:flex;flex-direction:column;justify-content:center;align-items:center;padding:22px 18px 26px;border:1px solid rgba(185,154,99,.30);background:linear-gradient(180deg,rgba(255,254,249,.97),rgba(249,245,236,.97));box-shadow:var(--shadow);overflow:hidden}
+.corner{position:absolute;width:92px;height:92px;border-color:rgba(185,154,99,.38);pointer-events:none}.tl{left:12px;top:12px;border-left:1px solid;border-top:1px solid}.br{right:12px;bottom:12px;border-right:1px solid;border-bottom:1px solid}
+.opening-flower{position:absolute;width:185px;opacity:.2;color:var(--sage);pointer-events:none}.opening-flower.left{left:-26px;bottom:-8px}.opening-flower.right{right:-22px;top:-10px;transform:scaleX(-1)}
+.opening-top{font-size:.62rem;letter-spacing:.24em;text-transform:uppercase;color:var(--deep)}
+.mono{margin-top:10px;color:var(--gold);font:1.25rem var(--serif);letter-spacing:.14em}.mono em{font:1.4em var(--script);font-style:normal}
+.opening-copy{margin:8px 0 16px;font:1.05rem var(--serif);color:var(--muted)}
+.cover-photo{width:min(320px,79vw);padding:8px;background:#fff;box-shadow:0 14px 35px rgba(39,51,43,.12);position:relative}
+.cover-photo img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:50% 55%}
+.cover-photo::after{content:"";position:absolute;inset:6px;border:1px solid rgba(185,154,99,.42);pointer-events:none}
+.script{margin-top:12px;color:var(--sage);font:1.7rem var(--script)}
+.opening h1{margin:0;color:var(--forest);font:500 clamp(3.2rem,13vw,4.9rem)/.82 var(--serif);letter-spacing:-.03em}
+.opening h1 span{color:var(--gold);font:1em var(--script)}
+.date{margin-top:14px;color:var(--gold);font-size:.68rem;letter-spacing:.28em}
+.opening-sub{margin:18px 0 0;color:var(--muted);font-size:.67rem;letter-spacing:.06em}
+.open-btn{margin-top:12px;display:inline-flex;align-items:center;gap:10px;padding:13px 22px;border-radius:999px;background:var(--forest);color:#fffdf8;border:1px solid rgba(185,154,99,.28);cursor:pointer;letter-spacing:.16em;font-size:.62rem;box-shadow:0 12px 28px rgba(41,66,54,.18);transition:.3s}
+.open-btn:hover{transform:translateY(-2px)}
+.open-sign{margin-top:12px;color:#929087;font:1.15rem var(--script)}
+
+/* Floating controls */
+.controls{position:fixed;right:16px;bottom:16px;z-index:3000;display:flex;gap:8px;opacity:0;transform:translateY(10px);pointer-events:none;transition:.4s}
+.controls.visible{opacity:1;transform:none;pointer-events:auto}
+.ctrl{width:48px;height:48px;border-radius:50%;border:1px solid rgba(185,154,99,.28);background:rgba(41,66,54,.94);color:#fffdf8;display:grid;place-items:center;cursor:pointer;box-shadow:0 14px 28px rgba(41,66,54,.2);backdrop-filter:blur(10px)}
+.ctrl .bars{display:flex;align-items:flex-end;gap:2px;height:12px}.ctrl .bars i{width:2px;height:6px;background:#dcc89f;animation:eq .9s ease-in-out infinite paused}.ctrl .bars i:nth-child(2){height:10px;animation-delay:.15s}.ctrl .bars i:nth-child(3){height:7px;animation-delay:.3s}.ctrl.playing .bars i{animation-play-state:running}
+@keyframes eq{50%{transform:scaleY(.45)}}
+
+/* Desktop presentation */
+.shell{max-width:1180px;margin:0 auto;padding:26px 18px 80px}
+.topnav{position:sticky;top:16px;z-index:1200;width:min(100%,1040px);margin:0 auto 14px;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:10px 14px;border:1px solid rgba(185,154,99,.2);background:rgba(255,253,248,.85);backdrop-filter:blur(12px);box-shadow:0 8px 28px rgba(50,61,53,.06)}
+.brand-mini{font:1.25rem var(--script);color:var(--deep)}
+.navlinks{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}.navlinks a{padding:7px 9px;border-radius:999px;color:var(--deep);font-size:.60rem;letter-spacing:.1em;text-transform:uppercase}.navlinks a:hover{background:rgba(123,146,127,.1)}
+main{opacity:0;visibility:hidden;transition:opacity .8s ease,visibility .8s ease}main.ready{opacity:1;visibility:visible}
+
+/* Common */
+.section{width:min(980px,100%);margin:24px auto;border-radius:22px;position:relative;overflow:hidden}
+.card{background:rgba(255,253,248,.90);border:1px solid rgba(185,154,99,.20);box-shadow:var(--shadow)}
+.kicker{font-size:.62rem;letter-spacing:.24em;text-transform:uppercase;color:var(--sage);font-weight:500}.title{margin:8px 0 16px;color:var(--forest);font:500 clamp(3.1rem,7vw,5.5rem)/.88 var(--serif)}.title em{font:1em var(--script);color:var(--gold);font-style:normal}.copy{max-width:650px;margin:0 auto;color:var(--muted);font-size:.92rem;line-height:1.95}
+.ornament{height:1px;width:92px;margin:18px auto;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+
+/* Hero */
+.hero{min-height:calc(100svh - 20px);display:grid;place-items:center;background:#294236;box-shadow:var(--shadow);overflow:hidden}
+.hero-media{position:absolute;inset:0}.hero-media img{width:100%;height:100%;object-fit:cover;object-position:50% 56%;filter:saturate(.85) contrast(.96)}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(28,45,36,.15),rgba(28,45,36,.52) 65%,rgba(28,45,36,.74))}
+.hero-frame{position:absolute;inset:24px;border:1px solid rgba(247,239,219,.5);z-index:2;pointer-events:none}
+.hero-center{position:relative;z-index:3;text-align:center;color:#fffdf7;width:min(790px,90%);padding:30px 18px}.hero-over{letter-spacing:.34em;text-transform:uppercase;font-size:.66rem;color:#ecdfc0}.hero-monogram{font:2.3rem var(--serif);letter-spacing:.13em;color:#e7d4a7;margin:16px 0 0}.hero-name{margin:4px 0 14px;font:500 clamp(4.4rem,11vw,8rem)/.8 var(--serif);letter-spacing:-.03em}.hero-name span{font:1em var(--script);color:#ead5a4}.hero-line{height:1px;width:110px;margin:18px auto;background:#e3cf9d}.hero-date{letter-spacing:.32em;font-size:.72rem;color:#f2e7cc}.hero-phrase{margin:28px auto 0;font:1.32rem/1.5 var(--serif);max-width:560px;color:rgba(255,253,247,.88)}.hero-scroll{display:inline-flex;flex-direction:column;gap:8px;margin-top:38px;color:#fffdf7;font-size:.61rem;letter-spacing:.16em;text-transform:uppercase}.hero-scroll i{width:1px;height:38px;background:#ead8ad;margin:0 auto}
+
+/* Editorial story */
+.story{padding:68px 40px;background:rgba(255,253,248,.92)}
+.story-inner{display:grid;grid-template-columns:1fr 1.06fr;gap:54px;align-items:center}.story-copy{text-align:left}.story-copy .ornament{margin-left:0}.story-photo{position:relative;padding:12px;background:#fff;box-shadow:0 16px 45px rgba(41,66,54,.12);transform:rotate(1deg)}.story-photo img{aspect-ratio:4/5;object-fit:cover}.story-photo::after{content:"";position:absolute;inset:8px;border:1px solid rgba(185,154,99,.35);pointer-events:none}.memory-tag{position:absolute;left:-22px;bottom:22px;padding:9px 14px;background:var(--forest);color:#fffdf8;font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;box-shadow:0 8px 18px rgba(41,66,54,.2)}
+
+/* Details */
+.details{padding:62px 28px;background:linear-gradient(135deg,#fefcf7,#f1ece0)}.details-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:30px}.detail-card{padding:30px 22px;background:rgba(255,255,255,.72);border:1px solid rgba(185,154,99,.20);text-align:center;position:relative}.detail-card::before{content:"";position:absolute;inset:8px;border:1px solid rgba(185,154,99,.15);pointer-events:none}.detail-icon{font:2.3rem var(--serif);color:var(--gold)}.detail-card h3{margin:8px 0 8px;color:var(--forest);font:500 2rem var(--serif)}.detail-card .time{color:var(--sage);font:2.7rem var(--serif)}.detail-card p{color:var(--muted);font-size:.78rem;line-height:1.75}.map-btn{display:inline-block;margin-top:15px;padding:10px 15px;border:1px solid rgba(57,83,70,.22);border-radius:999px;color:var(--deep);font-size:.6rem;letter-spacing:.13em;text-transform:uppercase;background:#fffdf8}
+
+/* Families */
+.families{padding:68px 28px;background:var(--forest);color:#fffdf7}.families .kicker{color:#d9ccad}.families .title{color:#fffdf7}.families-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:30px}.family{padding:28px 20px;text-align:center;border:1px solid rgba(217,204,173,.25);background:rgba(255,255,255,.035)}.family small{display:block;color:#d8cba9;letter-spacing:.18em;text-transform:uppercase;font-size:.57rem}.family h3{margin:12px 0 6px;color:#fffdf7;font:500 2rem var(--serif)}.family p{margin:4px 0;color:rgba(255,253,247,.74);font-size:.76rem}
+
+/* Quote */
+.quote{padding:84px 20px;text-align:center;background:linear-gradient(180deg,#e8eee4,#f8f4ea)}.quote-mark{font:5rem var(--serif);color:var(--gold);line-height:.5}.quote p{margin:18px auto 0;max-width:760px;color:var(--deep);font:500 clamp(2.5rem,6vw,4.7rem)/.95 var(--serif)}.quote p em{font:1em var(--script);color:var(--sage);font-style:normal}
+
+/* Gallery */
+.gallery{padding:68px 28px;background:#fffdf8}.gallery-grid{margin-top:30px;display:grid;grid-template-columns:1.05fr .95fr;grid-template-rows:240px 240px;gap:16px}.gphoto{position:relative;overflow:hidden;background:#dfe5dd}.gphoto img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s ease}.gphoto:hover img{transform:scale(1.05)}.gphoto.big{grid-row:span 2}.gphoto::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(38,51,42,.26));pointer-events:none}
+.gallery-note{margin-top:28px;text-align:center;color:var(--muted);font:1.45rem var(--script)}
+
+/* Music */
+.music{padding:76px 28px;background:linear-gradient(145deg,#f7f2e8,#e9eee6);text-align:center}.vinyl{width:92px;height:92px;margin:0 auto 22px;border-radius:50%;background:radial-gradient(circle,#d9c7a4 0 8px,#4d6556 9px 24px,#26382f 25px 44px,#18251f 45px);box-shadow:0 14px 24px rgba(38,53,44,.18);position:relative;animation:spin 8s linear infinite paused}.music.playing .vinyl{animation-play-state:running}.vinyl::after{content:"";position:absolute;inset:44px;width:4px;height:4px;border-radius:50%;background:#fff8e9}.song-name{font:500 2.5rem var(--serif);color:var(--forest)}.song-hint{margin-top:6px;color:var(--muted);font-size:.7rem;letter-spacing:.05em}.song-btn{margin-top:18px;padding:12px 18px;border:1px solid rgba(57,83,70,.2);border-radius:999px;background:#fffdf8;color:var(--deep);cursor:pointer;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* Countdown */
+.countdown{padding:72px 28px;background:#fefcf7;text-align:center}.count-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:28px}.count-cell{padding:18px 8px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}.count-num{display:block;color:var(--deep);font:500 clamp(2.6rem,5vw,4.4rem) var(--serif)}.count-label{display:block;margin-top:4px;color:var(--sage);font-size:.55rem;letter-spacing:.16em;text-transform:uppercase}
+
+/* RSVP */
+.rsvp{padding:82px 28px;text-align:center;background:linear-gradient(180deg,#edf1ea,#f8f4eb)}.rsvp .title{margin-bottom:10px}.rsvp-copy{max-width:600px;margin:0 auto;color:var(--muted);line-height:1.8;font-size:.82rem}.rsvp-btn{display:inline-flex;align-items:center;gap:9px;margin-top:22px;padding:14px 21px;border-radius:999px;background:var(--forest);color:#fffdf8;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;box-shadow:0 12px 24px rgba(41,66,54,.18)}
+
+/* Footer */
+.footer{position:relative;overflow:hidden;padding:92px 20px;text-align:center;color:#fffdf7;background:#314c3f}.footer-bg{position:absolute;inset:0;background:linear-gradient(180deg,rgba(35,58,47,.5),rgba(35,58,47,.86)),url('images/portada.jpeg') center/cover no-repeat;filter:saturate(.7)}.footer-inner{position:relative;z-index:2}.footer .title{color:#fffdf7}.footer .title em{color:#e3d0a7}.footer-date{color:#e5d5b2;letter-spacing:.28em;font-size:.66rem}.thanks{margin-top:24px;font:1.5rem var(--script);color:#f0e5c9}.brand{margin-top:46px;display:grid;gap:5px}.brand span{color:rgba(255,253,247,.55);font-size:.54rem;letter-spacing:.14em;text-transform:uppercase}.brand strong{color:#e4d4aa;font-size:.68rem;letter-spacing:.25em}.brand small{color:rgba(255,253,247,.5);font-size:.55rem}
+
+/* reveal */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .85s ease,transform .85s cubic-bezier(.2,.8,.2,1)}.reveal.show{opacity:1;transform:none}
+
+@media(max-width:760px){
+  .shell{padding:10px 10px 60px}.topnav{position:fixed;left:10px;right:10px;top:10px;width:auto;margin:0;border-radius:999px;padding:8px 10px}.navlinks{display:none}.brand-mini{font-size:1.15rem}.section{margin:12px auto;border-radius:18px}.hero{min-height:calc(100svh - 20px);border-radius:18px}.hero-frame{inset:16px}.story{padding:52px 18px}.story-inner{grid-template-columns:1fr;gap:28px}.story-copy{text-align:center}.story-copy .ornament{margin-inline:auto}.story-photo{max-width:380px;margin:0 auto}.details{padding:54px 16px}.details-grid{grid-template-columns:1fr}.families{padding:54px 16px}.families-grid{grid-template-columns:1fr}.gallery{padding:54px 16px}.gallery-grid{grid-template-columns:1fr 1fr;grid-template-rows:210px 210px}.gphoto.big{grid-row:span 2}.music{padding:62px 18px}.countdown{padding:58px 16px}.count-grid{grid-template-columns:repeat(2,1fr)}.rsvp{padding:64px 18px}.footer{padding:78px 16px}.controls{right:12px;bottom:12px}.opening-wrap{min-height:min(720px,94svh)}
+}
+@media(max-width:430px){.title{font-size:3.3rem}.hero-name{font-size:4.4rem}.hero-phrase{font-size:1.18rem}.cover-photo{width:74vw}.opening-wrap{padding-inline:15px}.story-photo{transform:none}.gphoto.big{grid-column:1/3}.gallery-grid{grid-template-rows:210px 160px 160px}.gallery-note{font-size:1.3rem}}
+</style>
 </head>
 <body class="locked">
 
-  <!-- ====== APERTURA ====== -->
-  <div class="opening" id="opening" aria-modal="true" role="dialog" aria-label="Abrir invitación">
-    <div class="marble-shine" aria-hidden="true"></div>
-    <div class="botanical botanical-opening botanical-opening-left" aria-hidden="true">
-      <svg viewBox="0 0 240 520" fill="none"><path d="M195 502C151 425 108 343 85 254C65 177 91 95 178 15"/><path d="M151 415C111 357 66 331 28 310"/><path d="M119 342C74 283 53 230 42 178"/><g fill="currentColor" stroke="none"><ellipse cx="146" cy="414" rx="31" ry="10" transform="rotate(55 146 414)"/><ellipse cx="109" cy="350" rx="30" ry="10" transform="rotate(66 109 350)"/><ellipse cx="79" cy="289" rx="29" ry="9" transform="rotate(80 79 289)"/><ellipse cx="68" cy="225" rx="28" ry="9" transform="rotate(100 68 225)"/><ellipse cx="92" cy="154" rx="29" ry="9" transform="rotate(128 92 154)"/><ellipse cx="129" cy="93" rx="28" ry="9" transform="rotate(142 129 93)"/></g></svg>
-    </div>
-    <div class="botanical botanical-opening botanical-opening-right" aria-hidden="true">
-      <svg viewBox="0 0 240 520" fill="none"><path d="M45 502C89 425 132 343 155 254C175 177 149 95 62 15"/><path d="M89 415C129 357 174 331 212 310"/><path d="M121 342C166 283 187 230 198 178"/><g fill="currentColor" stroke="none"><ellipse cx="94" cy="414" rx="31" ry="10" transform="rotate(-55 94 414)"/><ellipse cx="131" cy="350" rx="30" ry="10" transform="rotate(-66 131 350)"/><ellipse cx="161" cy="289" rx="29" ry="9" transform="rotate(-80 161 289)"/><ellipse cx="172" cy="225" rx="28" ry="9" transform="rotate(-100 172 225)"/><ellipse cx="148" cy="154" rx="29" ry="9" transform="rotate(-128 148 154)"/><ellipse cx="111" cy="93" rx="28" ry="9" transform="rotate(-142 111 93)"/></g></svg>
-    </div>
+<!-- OPENING -->
+<div class="opening" id="opening" role="dialog" aria-modal="true" aria-label="Abrir invitación">
+  <div class="opening-wrap">
+    <div class="corner tl"></div><div class="corner br"></div>
+    <svg class="opening-flower left" viewBox="0 0 220 500" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2"><path d="M190 495C145 395 107 300 90 205C77 128 120 55 186 12"/><path d="M149 405C112 347 74 322 30 306"/><path d="M119 324C80 270 62 214 56 165"/></g><g fill="currentColor"><ellipse cx="145" cy="410" rx="30" ry="9" transform="rotate(50 145 410)"/><ellipse cx="111" cy="350" rx="28" ry="8" transform="rotate(66 111 350)"/><ellipse cx="84" cy="290" rx="28" ry="8" transform="rotate(80 84 290)"/><ellipse cx="74" cy="225" rx="27" ry="8" transform="rotate(100 74 225)"/><ellipse cx="92" cy="155" rx="28" ry="8" transform="rotate(125 92 155)"/></g></svg>
+    <svg class="opening-flower right" viewBox="0 0 220 500" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2"><path d="M190 495C145 395 107 300 90 205C77 128 120 55 186 12"/><path d="M149 405C112 347 74 322 30 306"/><path d="M119 324C80 270 62 214 56 165"/></g><g fill="currentColor"><ellipse cx="145" cy="410" rx="30" ry="9" transform="rotate(50 145 410)"/><ellipse cx="111" cy="350" rx="28" ry="8" transform="rotate(66 111 350)"/><ellipse cx="84" cy="290" rx="28" ry="8" transform="rotate(80 84 290)"/><ellipse cx="74" cy="225" rx="27" ry="8" transform="rotate(100 74 225)"/><ellipse cx="92" cy="155" rx="28" ry="8" transform="rotate(125 92 155)"/></g></svg>
+    <div class="opening-top">Una historia para celebrar</div>
+    <div class="mono">R <em>&amp;</em> K</div>
+    <div class="opening-copy">El amor nos trajo hasta aquí</div>
+    <div class="cover-photo"><img src="images/portada.jpeg" alt="Rodrigo y Karla junto al mar"></div>
+    <div class="script">Con alegría en el corazón</div>
+    <h1>Rodrigo <span>&amp;</span> Karla</h1>
+    <div class="date">12 · DICIEMBRE · 2026</div>
+    <div class="opening-sub">Toca para abrir nuestra historia</div>
+    <button class="open-btn" id="openBtn"><span>♡</span> ABRIR INVITACIÓN</button>
+    <div class="open-sign">Con amor, Rodrigo &amp; Karla</div>
+  </div>
+</div>
 
-    <div class="opening-sheet" id="openingSheet">
-      <div class="sheet-corner sheet-corner-tl"></div>
-      <div class="sheet-corner sheet-corner-br"></div>
-      <p class="overline">Una historia para celebrar</p>
-      <div class="monogram">R<span>&amp;</span>K</div>
-      <p class="opening-line">El amor nos trajo hasta aquí</p>
+<audio id="music" preload="auto" loop playsinline><source src="audio/nuestra-cancion.mp3" type="audio/mpeg"></audio>
+<div class="controls" id="controls"><button class="ctrl" id="musicCtrl" aria-label="Pausar música"><span class="bars"><i></i><i></i><i></i></span></button><button class="ctrl" id="topCtrl" aria-label="Volver arriba">↑</button></div>
 
-      <div class="opening-photo">
-        <img src="images/portada.jpeg" alt="Rodrigo y Karla junto al mar">
-        <div class="photo-frame-line"></div>
-      </div>
-
-      <p class="script-small">Con alegría en el corazón</p>
-      <h1>Rodrigo <span>&amp;</span> Karla</h1>
-      <div class="opening-date">12 · 12 · 2026</div>
-      <p class="opening-instruction">Toca para abrir nuestra invitación</p>
-      <button class="open-button" id="openButton" type="button">
-        <span class="open-heart">♡</span>
-        <span>ABRIR INVITACIÓN</span>
-      </button>
-      <p class="opening-signature">Con amor, Rodrigo &amp; Karla</p>
+<main id="site">
+<div class="shell">
+  <div class="topnav">
+    <div class="brand-mini">Rodrigo &amp; Karla</div>
+    <div class="navlinks">
+      <a href="#historia">Historia</a><a href="#detalles">Detalles</a><a href="#familias">Familias</a><a href="#galeria">Fotos</a><a href="#confirmacion">RSVP</a>
     </div>
   </div>
 
-  <!-- ====== AUDIO ====== -->
-  <audio id="weddingMusic" preload="auto" loop playsinline>
-    <source src="audio/nuestra-cancion.mp3" type="audio/mpeg">
-  </audio>
+  <section class="section hero">
+    <div class="hero-media"><img src="images/portada.jpeg" alt="Rodrigo y Karla en la playa"></div>
+    <div class="hero-frame"></div>
+    <div class="hero-center reveal">
+      <div class="hero-over">Nos casamos</div>
+      <div class="hero-monogram">R &amp; K</div>
+      <div class="hero-name">Rodrigo <span>&amp;</span> Karla</div>
+      <div class="hero-line"></div>
+      <div class="hero-date">12 · DICIEMBRE · 2026</div>
+      <div class="hero-phrase">Dos corazones, una promesa y toda una vida por compartir.</div>
+      <div class="hero-scroll">Desliza<i></i></div>
+    </div>
+  </section>
 
-  <div class="floating-tools" aria-label="Controles de la invitación">
-    <button id="musicButton" class="tool-button music-button" type="button" aria-label="Reproducir o pausar música" aria-pressed="false">
-      <span class="music-note">♪</span>
-      <span class="equalizer"><i></i><i></i><i></i></span>
-    </button>
-    <button id="menuButton" class="tool-button menu-button" type="button" aria-label="Abrir menú" aria-expanded="false">☰</button>
-  </div>
-
-  <nav class="quick-menu" id="quickMenu" aria-hidden="true">
-    <a href="#historia">Nuestra historia</a>
-    <a href="#ceremonia">Ceremonia</a>
-    <a href="#recepcion">Recepción</a>
-    <a href="#familias">Padres</a>
-    <a href="#galeria">Fotos</a>
-    <a href="#rsvp">Confirmar</a>
-  </nav>
-
-  <main id="site" aria-hidden="true">
-
-    <!-- ====== HERO ====== -->
-    <section class="hero" id="inicio">
-      <div class="hero-photo" aria-hidden="true"><img src="images/portada.jpeg" alt=""></div>
-      <div class="hero-wash"></div>
-      <div class="hero-botanical hero-botanical-left" aria-hidden="true"></div>
-      <div class="hero-botanical hero-botanical-right" aria-hidden="true"></div>
-
-      <div class="hero-card reveal">
-        <div class="hero-card-top">NOS CASAMOS</div>
-        <div class="hero-monogram">R <span>&amp;</span> K</div>
-        <div class="hero-script">Rodrigo &amp; Karla</div>
-        <div class="hero-divider"></div>
-        <div class="hero-date">12 · DICIEMBRE · 2026</div>
-        <p>Dos corazones, una promesa<br>y toda una vida por compartir.</p>
-        <span class="scroll-hint">Desliza <i></i></span>
+  <section class="section card story" id="historia">
+    <div class="story-inner">
+      <div class="story-copy reveal">
+        <div class="kicker">Nuestra historia</div>
+        <div class="title">Dos caminos,<br><em>un mismo destino.</em></div>
+        <div class="ornament"></div>
+        <p class="copy">Hay encuentros que llegan sin avisar y terminan convirtiéndose en el lugar al que siempre queremos volver.</p>
+        <p class="copy" style="margin-top:14px">Hoy queremos compartir contigo uno de los días más importantes de nuestras vidas: el día en que elegimos caminar juntos para siempre.</p>
+        <div class="script" style="margin-top:18px">Con amor, Rodrigo &amp; Karla</div>
       </div>
-    </section>
+      <div class="story-photo reveal"><img src="images/historia.jpeg" alt="Rodrigo y Karla en la playa"><div class="memory-tag">Un recuerdo para siempre</div></div>
+    </div>
+  </section>
 
-    <!-- ====== NUESTRA HISTORIA ====== -->
-    <section class="paper-section section" id="historia">
-      <div class="paper-ornament ornament-top" aria-hidden="true"></div>
-      <div class="content-narrow reveal">
-        <p class="eyebrow">Nuestra historia</p>
-        <div class="script-title">Dos caminos,<br><span>un mismo destino.</span></div>
-        <div class="gold-rule"></div>
-        <p class="lead-copy">Hay encuentros que llegan sin avisar y terminan convirtiéndose en el lugar al que siempre queremos volver.</p>
-        <p class="body-copy">Hoy queremos compartir contigo uno de los días más importantes de nuestras vidas: el día en que elegimos caminar juntos para siempre.</p>
-        <div class="love-line"><span>♡</span> Con amor, Rodrigo &amp; Karla <span>♡</span></div>
-      </div>
+  <section class="section quote reveal">
+    <div class="quote-mark">“</div>
+    <p>Que nunca nos falten<br><em>motivos para elegirnos.</em></p>
+    <div class="quote-mark">”</div>
+  </section>
 
-      <div class="memory-card reveal">
-        <div class="memory-photo"><img src="images/historia.jpeg" alt="Rodrigo y Karla en la playa"></div>
-        <div class="memory-note">
-          <span class="memory-script">Un recuerdo</span>
-          <p>Un lugar, una tarde y dos personas que ya sabían que querían seguir escribiendo esta historia.</p>
-        </div>
-      </div>
-    </section>
+  <section class="section details card" id="detalles">
+    <div style="text-align:center" class="reveal">
+      <div class="kicker">El gran día</div>
+      <div class="title">Celebremos <em>juntos.</em></div>
+      <p class="copy">Con mucha ilusión queremos compartir contigo cada momento de este día tan especial.</p>
+    </div>
+    <div class="details-grid">
+      <article class="detail-card reveal"><div class="detail-icon">♡</div><div class="kicker">Ceremonia religiosa</div><div class="time">13:00</div><h3>Virgen de Guadalupe</h3><p>Capilla Católica<br>KM 15</p><a class="map-btn" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Capilla%20Catolica%20Virgen%20de%20Guadalupe%20Km%2015">Ver ubicación</a></article>
+      <article class="detail-card reveal"><div class="detail-icon">✦</div><div class="kicker">Recepción</div><div class="time">16:00</div><h3>Casa Quinta Reinaga</h3><p>Kilómetro 20<br>Carretera Antigua a Cochabamba</p><a class="map-btn" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Casa%20Quinta%20Reinaga%20Kilometro%2020%20Carretera%20Antigua%20a%20Cochabamba">Cómo llegar</a></article>
+    </div>
+  </section>
 
-    <!-- ====== FRASE ====== -->
-    <section class="quote-section section-green reveal">
-      <div class="watercolor-water" aria-hidden="true"></div>
-      <div class="quote-content">
-        <div class="quote-symbol">“</div>
-        <p>Que nunca nos falten<br><em>motivos para elegirnos.</em></p>
-        <div class="quote-symbol end">”</div>
-      </div>
-    </section>
+  <section class="section families" id="familias">
+    <div style="text-align:center" class="reveal"><div class="kicker">Con la bendición de nuestros padres</div><div class="title">El amor que nos enseñó<br><em>a llegar hasta aquí.</em></div></div>
+    <div class="families-grid">
+      <div class="family reveal"><small>Padres del novio</small><h3>Sergio Choque Condori</h3><p>e</p><h3>Inés Luna Flores</h3></div>
+      <div class="family reveal"><small>Padres de la novia</small><h3>Jaime Vargas Quintanilla</h3><p>e</p><h3>Vicenta Zenteno Vargas</h3></div>
+    </div>
+  </section>
 
-    <!-- ====== FAMILIAS ====== -->
-    <section class="paper-section section" id="familias">
-      <div class="content-medium reveal">
-        <p class="eyebrow">Con la bendición de nuestros padres</p>
-        <div class="script-title small">Las familias que nos acompañan<br><span>en este día tan especial.</span></div>
-        <div class="gold-rule"></div>
-      </div>
+  <section class="section gallery card" id="galeria">
+    <div style="text-align:center" class="reveal"><div class="kicker">Nuestros momentos</div><div class="title">Pequeños instantes,<br><em>una gran historia.</em></div><p class="copy">Algunos recuerdos que guardamos con especial cariño.</p></div>
+    <div class="gallery-grid">
+      <div class="gphoto big reveal"><img src="images/portada.jpeg" alt="Rodrigo y Karla al atardecer"></div>
+      <div class="gphoto reveal"><img src="images/historia.jpeg" alt="Rodrigo y Karla juntos"></div>
+      <div class="gphoto reveal"><img src="images/portada.jpeg" alt="Rodrigo y Karla junto al mar"></div>
+    </div>
+    <div class="gallery-note">“Y entre tantas personas en el mundo, nos encontramos.”</div>
+  </section>
 
-      <div class="families">
-        <article class="family-block reveal">
-          <div class="family-tag">Padres del novio</div>
-          <h3>Sergio Choque Condori</h3>
-          <div class="and-mark">&amp;</div>
-          <h3>Inés Luna Flores</h3>
-        </article>
-        <article class="family-block reveal">
-          <div class="family-tag">Padres de la novia</div>
-          <h3>Jaime Vargas Quintanilla</h3>
-          <div class="and-mark">&amp;</div>
-          <h3>Vicenta Zenteno Vargas</h3>
-        </article>
-      </div>
-    </section>
+  <section class="section music card" id="cancion">
+    <div class="vinyl" id="vinyl"></div>
+    <div class="kicker">Nuestra canción</div>
+    <div class="title" style="margin-bottom:8px">Una melodía que <em>nos representa.</em></div>
+    <div class="song-name">Así Es Nuestro Amor</div>
+    <div class="song-hint">La canción que acompaña nuestra historia.</div>
+    <button class="song-btn" id="songCtrl">Reproducir / pausar</button>
+  </section>
 
-    <!-- ====== CEREMONIA ====== -->
-    <section class="event-page section" id="ceremonia">
-      <div class="event-sheet reveal">
-        <div class="event-botanical event-botanical-left" aria-hidden="true"></div>
-        <div class="event-botanical event-botanical-right" aria-hidden="true"></div>
-        <div class="event-icon">✦</div>
-        <p class="eyebrow">Ceremonia religiosa</p>
-        <div class="event-title-script">Primero,<br><span>unir nuestras vidas.</span></div>
-        <div class="event-time">13:00 <small>HRS</small></div>
-        <div class="gold-rule small-rule"></div>
-        <h3>Capilla Católica<br><strong>Virgen de Guadalupe</strong></h3>
-        <p class="place">KM 15</p>
-        <a class="map-button" href="https://www.google.com/maps/search/?api=1&query=Capilla%20Catolica%20Virgen%20de%20Guadalupe%20Km%2015" target="_blank" rel="noopener">VER UBICACIÓN</a>
-      </div>
-    </section>
+  <section class="section countdown card">
+    <div style="text-align:center" class="reveal"><div class="kicker">Cada día falta menos</div><div class="title">Cuenta regresiva</div></div>
+    <div class="count-grid">
+      <div class="count-cell"><span class="count-num" id="days">000</span><span class="count-label">Días</span></div>
+      <div class="count-cell"><span class="count-num" id="hours">00</span><span class="count-label">Horas</span></div>
+      <div class="count-cell"><span class="count-num" id="mins">00</span><span class="count-label">Minutos</span></div>
+      <div class="count-cell"><span class="count-num" id="secs">00</span><span class="count-label">Segundos</span></div>
+    </div>
+  </section>
 
-    <!-- ====== RECEPCIÓN ====== -->
-    <section class="reception-page section" id="recepcion">
-      <div class="reception-frame reveal">
-        <div class="reception-topline">Y después de decir “sí”...</div>
-        <div class="script-title light">celebremos <span>juntos.</span></div>
-        <div class="gold-rule light-rule"></div>
-        <div class="event-time light-time">16:00 <small>HRS</small></div>
-        <h3>Casa Quinta Reinaga</h3>
-        <p>Kilómetro 20<br>Carretera Antigua a Cochabamba</p>
-        <a class="cream-button" href="https://www.google.com/maps/search/?api=1&query=Casa%20Quinta%20Reinaga%20Kilometro%2020%20Carretera%20Antigua%20a%20Cochabamba" target="_blank" rel="noopener">CÓMO LLEGAR</a>
-      </div>
-    </section>
+  <section class="section rsvp" id="confirmacion">
+    <div class="kicker reveal">Tu presencia lo hará aún más especial</div>
+    <div class="title reveal">¿Nos <em>acompañas?</em></div>
+    <p class="rsvp-copy reveal">Nos encantaría celebrar este día contigo. Confirma tu asistencia y ayúdanos a preparar todo con mucho cariño.</p>
+    <a class="rsvp-btn reveal" target="_blank" href="https://wa.me/?text=Hola%20Rodrigo%20y%20Karla%20%F0%9F%A4%8D%20Quiero%20confirmar%20mi%20asistencia%20a%20su%20boda%20del%2012%20de%20diciembre%20de%202026.%20%F0%9F%A4%8D">Confirmar asistencia</a>
+  </section>
 
-    <!-- ====== CUENTA REGRESIVA ====== -->
-    <section class="countdown-page section-green-dark">
-      <div class="countdown-leaf count-leaf-left" aria-hidden="true"></div>
-      <div class="countdown-leaf count-leaf-right" aria-hidden="true"></div>
-      <div class="content-medium countdown-inner reveal">
-        <p class="eyebrow light-eyebrow">La cuenta regresiva</p>
-        <div class="script-title cream-script">Falta poquito<br><span>para nuestro gran día.</span></div>
-        <div class="count-grid">
-          <div class="count-card"><strong id="days">000</strong><span>DÍAS</span></div>
-          <div class="count-card"><strong id="hours">00</strong><span>HORAS</span></div>
-          <div class="count-card"><strong id="minutes">00</strong><span>MINUTOS</span></div>
-          <div class="count-card"><strong id="seconds">00</strong><span>SEGUNDOS</span></div>
-        </div>
-      </div>
-    </section>
+  <footer class="section footer">
+    <div class="footer-bg"></div>
+    <div class="footer-inner reveal">
+      <div class="kicker" style="color:#ddcfab">Nuestro para siempre</div>
+      <div class="title">Rodrigo <em>&amp;</em> Karla</div>
+      <div class="footer-date">12 · 12 · 2026</div>
+      <div class="thanks">Gracias por ser parte de nuestra historia.</div>
+      <div class="brand"><span>Diseño &amp; experiencia digital</span><strong>MAIKY TECH</strong><small>Tecnología que simplifica tu trabajo</small></div>
+    </div>
+  </footer>
+</div>
+</main>
 
-    <!-- ====== GALERÍA ====== -->
-    <section class="paper-section section" id="galeria">
-      <div class="content-medium reveal">
-        <p class="eyebrow">Nuestros momentos</p>
-        <div class="script-title">Pequeñas fotografías,<br><span>recuerdos para toda la vida.</span></div>
-      </div>
+<script>
+const opening=document.getElementById('opening');
+const openBtn=document.getElementById('openBtn');
+const site=document.getElementById('site');
+const music=document.getElementById('music');
+const controls=document.getElementById('controls');
+const musicCtrl=document.getElementById('musicCtrl');
+const topCtrl=document.getElementById('topCtrl');
+const songCtrl=document.getElementById('songCtrl');
+const vinyl=document.getElementById('vinyl');
+let fadeId=null;
 
-      <div class="gallery-grid">
-        <figure class="gallery-card gallery-card-large reveal">
-          <div class="gallery-frame"><img src="images/portada.jpeg" alt="Rodrigo y Karla junto al mar"></div>
-          <figcaption>Donde todo se sintió más bonito.</figcaption>
-        </figure>
-        <figure class="gallery-card gallery-card-small reveal">
-          <div class="gallery-frame"><img src="images/historia.jpeg" alt="Rodrigo y Karla en la playa"></div>
-          <figcaption>Un momento que guardaríamos para siempre.</figcaption>
-        </figure>
-      </div>
-
-      <div class="album-end reveal">♡</div>
-    </section>
-
-    <!-- ====== CANCIÓN ====== -->
-    <section class="song-page section">
-      <div class="content-narrow reveal">
-        <p class="eyebrow">Nuestra canción</p>
-        <div class="vinyl-wrap">
-          <div class="vinyl"><span>R<br>&amp;<br>K</span></div>
-        </div>
-        <div class="script-title light-script">Hay canciones que<br><span>siempre hablan de nosotros.</span></div>
-        <div class="gold-rule light-rule"></div>
-        <p class="song-name">Así Es Nuestro Amor</p>
-        <button class="song-button" id="songButton" type="button"><span>▶</span> REPRODUCIR / PAUSAR</button>
-      </div>
-    </section>
-
-    <!-- ====== RSVP ====== -->
-    <section class="paper-section section" id="rsvp">
-      <div class="rsvp-card reveal">
-        <div class="rsvp-flower">❀</div>
-        <p class="eyebrow">Queremos compartirlo contigo</p>
-        <div class="script-title">¿Nos acompañas<br><span>en este día tan especial?</span></div>
-        <div class="gold-rule"></div>
-        <p class="body-copy">Tu presencia será uno de los regalos más bonitos para nosotros.</p>
-        <a class="rsvp-button" href="https://wa.me/?text=Hola%20Rodrigo%20y%20Karla%20%F0%9F%A4%8D%20Quiero%20confirmar%20mi%20asistencia%20a%20su%20boda%20del%2012%20de%20diciembre%20de%202026." target="_blank" rel="noopener">CONFIRMAR ASISTENCIA</a>
-        <p class="rsvp-note">El número de WhatsApp de confirmación se puede personalizar al final.</p>
-      </div>
-    </section>
-
-    <!-- ====== CIERRE ====== -->
-    <section class="closing-page">
-      <div class="closing-photo"><img src="images/portada.jpeg" alt="Rodrigo y Karla"></div>
-      <div class="closing-wash"></div>
-      <div class="closing-botanical closing-left" aria-hidden="true"></div>
-      <div class="closing-botanical closing-right" aria-hidden="true"></div>
-      <div class="closing-content reveal">
-        <p class="eyebrow closing-eyebrow">Para siempre</p>
-        <div class="closing-script">Rodrigo <span>&amp;</span> Karla</div>
-        <div class="gold-rule closing-rule"></div>
-        <div class="closing-date">12 · 12 · 2026</div>
-        <p class="closing-message">Gracias por ser parte de nuestra historia<br>y de este día que llevaremos en el corazón.</p>
-        <div class="closing-signature">Con cariño,<br><span>Rodrigo &amp; Karla</span></div>
-        <div class="maiky">Diseño &amp; experiencia digital · <strong>MAIKY TECH</strong></div>
-      </div>
-    </section>
-
-  </main>
-
-  <script src="script.js"></script>
+function fadeTo(target,duration=8000){
+  if(fadeId) cancelAnimationFrame(fadeId);
+  const from=music.volume,start=performance.now();
+  function step(t){
+    const p=Math.min((t-start)/duration,1);
+    const e=1-Math.pow(1-p,3);
+    music.volume=from+(target-from)*e;
+    if(p<1) fadeId=requestAnimationFrame(step);
+  }
+  fadeId=requestAnimationFrame(step);
+}
+function setMusicUI(on){
+  musicCtrl.classList.toggle('playing',on);
+  vinyl.classList.toggle('playing',on);
+}
+async function startMusic(){
+  try{
+    music.pause(); music.currentTime=0; music.muted=false; music.volume=0.001;
+    await music.play();
+    setMusicUI(true); fadeTo(.82,9000);
+  }catch(e){console.warn(e);}
+}
+openBtn.addEventListener('click',()=>{
+  opening.classList.add('out');
+  document.body.classList.remove('locked');
+  site.classList.add('ready');
+  controls.classList.add('visible');
+  startMusic();
+  setTimeout(()=>document.querySelectorAll('.reveal').forEach(el=>el.classList.add('show')),160);
+});
+musicCtrl.addEventListener('click',async()=>{
+  if(music.paused){ try{music.volume=.18;await music.play();setMusicUI(true);fadeTo(.82,1200)}catch(e){console.warn(e)} }
+  else{music.pause();setMusicUI(false)}
+});
+songCtrl.addEventListener('click',async()=>{
+  if(music.paused){try{music.volume=Math.max(music.volume,.18);await music.play();setMusicUI(true);fadeTo(.82,1200)}catch(e){console.warn(e)}}else{music.pause();setMusicUI(false)}
+});
+topCtrl.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('show');observer.unobserve(e.target)}})},{threshold:.13});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+const wedding=new Date('2026-12-12T13:00:00-04:00');
+function countdown(){
+  const d= wedding-new Date();
+  const set=(id,n)=>document.getElementById(id).textContent=n;
+  if(d<=0){set('days','000');set('hours','00');set('mins','00');set('secs','00');return}
+  set('days',String(Math.floor(d/86400000)).padStart(3,'0'));
+  set('hours',String(Math.floor(d/3600000)%24).padStart(2,'0'));
+  set('mins',String(Math.floor(d/60000)%60).padStart(2,'0'));
+  set('secs',String(Math.floor(d/1000)%60).padStart(2,'0'));
+}
+countdown();setInterval(countdown,1000);
+</script>
 </body>
 </html>
-
