@@ -93,8 +93,71 @@ a{color:inherit;text-decoration:none}button{font:inherit}img{display:block;max-w
 .rsvp-section{padding-top:75px;padding-bottom:78px}.rsvp-card{max-width:580px;margin:30px auto 0;padding:38px 22px;background:linear-gradient(150deg,#fffefa,#f0eee3);border:1px solid rgba(182,155,104,.5);box-shadow:var(--shadow);position:relative}.rsvp-card::before{content:"";position:absolute;inset:7px;border:1px solid rgba(112,134,109,.2);pointer-events:none}.rsvp-heart{font:2.2rem var(--script);color:var(--gold)}.rsvp-card h3{margin:8px 0 0;font:500 clamp(2.3rem,7vw,3.4rem)/.95 var(--serif);color:var(--forest)}.rsvp-card p{position:relative;max-width:380px;margin:16px auto 0;font:1.08rem/1.75 var(--serif);color:var(--muted)}.rsvp-card .solid-btn{position:relative;margin-top:22px}
 .closing{position:relative;overflow:hidden;text-align:center;padding:58px 22px 72px;background:linear-gradient(155deg,#e3e9df,#f7f3e9 70%)}.closing .closing-photo{width:min(68%,290px);margin:0 auto 25px;padding:7px;background:#fff;box-shadow:0 12px 35px rgba(47,67,49,.13);transform:rotate(1deg)}.closing-photo img{width:100%;height:clamp(190px,50vw,300px);object-fit:cover;object-position:50% 55%}.closing h2{margin:0;font:500 clamp(3.2rem,11vw,5.2rem)/.8 var(--serif);color:var(--forest)}.closing h2 span{display:block;margin:5px 0;color:var(--gold);font:2rem var(--script)}.closing p{margin:22px 0 0;color:var(--olive);font:1.55rem/1.2 var(--script)}.closing-date{display:block;margin-top:18px;color:var(--gold);font-size:.62rem;letter-spacing:.25em}
 .site-footer{padding:17px 12px;text-align:center;color:#969789;font-size:.55rem;letter-spacing:.1em;background:#f7f3e9}
+
+/* Romantic finishing details: appear gently as each section enters the viewport. */
+.decorated-section{isolation:isolate}
+.decorated-section::after{
+  content:"❧   ♡   ❧";
+  position:absolute;left:0;right:0;bottom:17px;
+  display:block;text-align:center;pointer-events:none;
+  color:var(--gold);font:1.55rem/1 var(--script);letter-spacing:.12em;
+  opacity:0;transform:translateY(9px) scale(.96);
+  transition:opacity .9s ease,transform .9s cubic-bezier(.2,.7,.2,1);
+}
+.decorated-section.section-seen::after{opacity:.86;transform:translateY(0) scale(1)}
+.decorated-section>.section-label::before,
+.decorated-section>.section-label::after{
+  content:"✧";display:inline-block;color:var(--gold);font-size:.75em;
+  margin:0 .78em;vertical-align:middle;opacity:.9;
+}
+/* Keep botanical drawings behind the copy so they never cross the text. */
+.section>.botanical{z-index:0;opacity:.18}
+.section>:not(.botanical){position:relative;z-index:1}
+.calendar-section>.botanical.top-left{width:102px;height:132px;left:-8px;top:2px;opacity:.15}
+.story>.botanical.bottom-right,.adults-section>.botanical.bottom-right,.rsvp-section>.botanical.bottom-right{width:112px;height:145px;opacity:.15}
+/* A tiny paper shimmer on frames, rather than a heavy visual effect. */
+.hero-image-frame,.story-photo-wrap,.closing-photo{isolation:isolate}
+.closing-photo{position:relative}
+.hero-image-frame::after{
+  content:"";position:absolute;inset:0;pointer-events:none;z-index:2;
+  background:linear-gradient(112deg,transparent 0%,rgba(255,255,255,0) 35%,rgba(255,255,255,.34) 48%,rgba(255,255,255,0) 60%,transparent 100%);
+  transform:translateX(-130%);opacity:0;
+}
+.hero-image-frame.in-view::after{opacity:1;animation:frameShimmer 1.45s ease-out .35s 1}
+@keyframes frameShimmer{to{transform:translateX(130%);opacity:0}}
+/* Scrapbook-style translucent washi tape on the photographs. */
+.gallery-card::before,.closing-photo::before{
+  content:"";position:absolute;z-index:3;top:-4px;left:calc(50% - 31px);
+  width:62px;height:17px;background:rgba(217,199,164,.48);
+  border-left:1px solid rgba(182,155,104,.12);border-right:1px solid rgba(182,155,104,.12);
+  transform:rotate(-3deg);pointer-events:none;
+}
+.gallery-card:nth-child(2)::before{transform:rotate(4deg)}
+.closing-photo::before{top:-3px;transform:rotate(3deg)}
+.gallery-card{transition:transform .6s cubic-bezier(.2,.7,.2,1),box-shadow .6s ease}
+.gallery-card.in-view:nth-child(1){transform:rotate(-1.2deg) translateY(0)}
+.gallery-card.in-view:nth-child(2){transform:rotate(1deg) translateY(0)}
+@media(hover:hover){.gallery-card:hover{transform:translateY(-5px) rotate(0deg);box-shadow:0 18px 34px rgba(47,67,49,.15)}}
+/* The record gently turns only while the song is playing. */
+.song-section.playing .vinyl{animation:vinylTurn 12s linear infinite}
+@keyframes vinylTurn{to{transform:rotate(360deg)}}
+/* A breathing seal and quietly swaying leaves make the page feel alive. */
+.calendar-stamp{animation:sealFloat 5.5s ease-in-out infinite}
+@keyframes sealFloat{0%,100%{transform:rotate(7deg) translateY(0)}50%{transform:rotate(4deg) translateY(-3px)}}
+.botanical{translate:0 0;animation:leafSway 7s ease-in-out infinite alternate;transform-origin:bottom left}
+@keyframes leafSway{from{translate:0 0}to{translate:2px -3px}}
+/* Richer staggered scroll reveal, with fallback visibility when motion is reduced. */
+.will-reveal{opacity:0;transform:translateY(20px) scale(.992);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1);transition-delay:var(--reveal-delay,0ms)}
+.will-reveal.in-view{opacity:1;transform:translateY(0) scale(1)}
+@media(prefers-reduced-motion:reduce){
+  .botanical,.calendar-stamp,.song-section.playing .vinyl{animation:none!important}
+  .hero-image-frame.in-view::after{display:none}
+  .will-reveal{opacity:1;transform:none;transition:none}
+  .decorated-section::after{opacity:.86;transform:none;transition:none}
+}
+
 /* Reveal is progressive enhancement only: if JS fails, content remains visible. */
-.will-reveal{opacity:0;transform:translateY(18px);transition:opacity .75s ease,transform .75s cubic-bezier(.2,.7,.2,1)}.will-reveal.in-view{opacity:1;transform:none}
+.will-reveal{opacity:0;transform:translateY(20px) scale(.992);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1);transition-delay:var(--reveal-delay,0ms)}.will-reveal.in-view{opacity:1;transform:translateY(0) scale(1)}
 @media(min-width:700px){.section{padding-top:88px;padding-bottom:88px}.hero{padding-top:14px}.top-note{padding-top:37px}.verse-panel{margin:0 44px;padding:52px 36px}.event-list{grid-template-columns:1fr 1fr;max-width:100%;align-items:stretch}.event-card{grid-template-columns:1fr;gap:12px}.event-time{min-height:82px;flex-direction:row;gap:8px}.event-time span{margin-top:0}.event-info{padding:6px 4px 7px}.event-info .solid-btn{white-space:nowrap}.parent-card{min-height:225px}.calendar-card{padding:32px 35px}.calendar-grid{gap:8px}.calendar-grid .day{font-size:1.12rem}}
 @media(max-height:690px){.cover-card{min-height:0;padding:20px 18px}.cover-photo{height:clamp(125px,22svh,170px);width:min(58%,220px)}.cover-intro{font-size:1.08rem}.cover-names{font-size:3.5rem}.cover-quote{font-size:.98rem;margin-top:9px}.open-btn{margin-top:12px;padding:11px 18px}}
 @media(max-width:380px){.section{padding-left:17px;padding-right:17px}.cover-card{padding-left:14px;padding-right:14px}.cover-photo{width:68%;height:clamp(130px,24svh,190px)}.event-card{grid-template-columns:70px 1fr;gap:13px;padding:11px}.event-time strong{font-size:1.85rem}.event-info h3{font-size:1.55rem}.parents-grid{gap:9px}.parent-card{padding-left:8px;padding-right:8px}.parent-label{letter-spacing:.1em}}
@@ -142,7 +205,7 @@ a{color:inherit;text-decoration:none}button{font:inherit}img{display:block;max-w
 
 <main class="invitation" id="invitation">
   <header class="top-note paper-texture">
-    <div class="monogram" aria-hidden="true">R<span style="font-size:1.1rem;color:var(--gold)">&</span>K</div>
+    <div class="monogram" aria-hidden="true">R<span style="font-size:1.1rem;color:var(--gold)">&</span>A</div>
     <p class="kicker">Una historia para celebrar</p>
     <p class="script" style="font-size:2rem;margin:8px 0 0">El amor nos trajo hasta aquí</p>
   </header>
@@ -168,7 +231,7 @@ a{color:inherit;text-decoration:none}button{font:inherit}img{display:block;max-w
     </div>
   </section>
 
-  <section class="section story paper-texture">
+  <section class="section story paper-texture decorated-section">
     <svg class="botanical bottom-right" aria-hidden="true"><use href="#sprig"/></svg>
     <p class="section-label">Nuestra historia</p>
     <h2 class="section-title">Un sí para <span class="script" style="font-size:1.15em">toda la vida</span></h2>
@@ -177,7 +240,7 @@ a{color:inherit;text-decoration:none}button{font:inherit}img{display:block;max-w
     <p class="script" style="font-size:2rem;margin:28px 0 0">Nuestro capítulo favorito empieza ahora.</p>
   </section>
 
-  <section class="calendar-section section paper-texture" id="fecha">
+  <section class="calendar-section section paper-texture decorated-section" id="fecha">
     <svg class="botanical top-left" aria-hidden="true"><use href="#sprig"/></svg>
     <p class="section-label">Guarda la fecha</p>
     <h2 class="section-title">Un día para <span class="script" style="font-size:1.12em">recordar</span></h2>
@@ -185,7 +248,7 @@ a{color:inherit;text-decoration:none}button{font:inherit}img{display:block;max-w
     <div class="calendar-card reveal" aria-label="Calendario de diciembre de 2026">
       <div class="calendar-head">
         <div><span class="month-script">Diciembre</span><span class="year">DOS MIL VEINTISÉIS</span></div>
-        <div class="calendar-stamp" aria-hidden="true">R ♥ K</div>
+        <div class="calendar-stamp" aria-hidden="true">R ♥ A</div>
       </div>
       <div class="calendar-grid" role="grid" aria-label="Diciembre de 2026">
         <span class="weekday" role="columnheader">L</span><span class="weekday" role="columnheader">M</span><span class="weekday" role="columnheader">X</span><span class="weekday" role="columnheader">J</span><span class="weekday" role="columnheader">V</span><span class="weekday" role="columnheader">S</span><span class="weekday" role="columnheader">D</span>
@@ -210,7 +273,7 @@ a{color:inherit;text-decoration:none}button{font:inherit}img{display:block;max-w
     <button class="outline-btn calendar-btn" id="saveCalendar" type="button">♡ Guardar la fecha en mi calendario</button>
   </section>
 
-  <section class="details-section section" id="detalles">
+  <section class="details-section section decorated-section" id="detalles">
     <p class="section-label">Nos encantará tenerte cerca</p>
     <h2 class="section-title">Acompáñanos <span class="script" style="font-size:1.1em">a celebrar</span></h2>
     <p class="details-intro">Dos momentos, una promesa y la alegría de compartirlo con las personas que queremos.</p>
@@ -226,7 +289,7 @@ a{color:inherit;text-decoration:none}button{font:inherit}img{display:block;max-w
     </div>
   </section>
 
-  <section class="family-section section paper-texture">
+  <section class="family-section section paper-texture decorated-section">
     <p class="section-label">Con la bendición de nuestras familias</p>
     <h2 class="section-title">Quienes nos enseñaron <span class="script" style="font-size:1.08em">a amar</span></h2>
     <p class="section-copy">Con gratitud y cariño, queremos compartir este momento tan especial junto a nuestros padres.</p>
@@ -236,7 +299,7 @@ a{color:inherit;text-decoration:none}button{font:inherit}img{display:block;max-w
     </div>
   </section>
 
-  <section class="gallery-section section">
+  <section class="gallery-section section decorated-section">
     <p class="section-label">Pequeños instantes, recuerdos eternos</p>
     <h2 class="section-title">Un poquito de <span class="script" style="font-size:1.12em">nosotros</span></h2>
     <div class="gallery-grid">
@@ -245,7 +308,7 @@ a{color:inherit;text-decoration:none}button{font:inherit}img{display:block;max-w
     </div>
   </section>
 
-  <section class="song-section section" id="cancion">
+  <section class="song-section section decorated-section" id="cancion">
     <p class="section-label">Una canción que habla por nosotros</p>
     <h2 class="section-title">Nuestra <span class="script" style="font-size:1.12em">canción</span></h2>
     <div class="vinyl" aria-hidden="true"></div>
@@ -254,7 +317,7 @@ a{color:inherit;text-decoration:none}button{font:inherit}img{display:block;max-w
     <p class="song-note">“Así Es Nuestro Amor” · para bailar con el corazón</p>
   </section>
 
-  <section class="adults-section section paper-texture" id="solo-adultos">
+  <section class="adults-section section paper-texture decorated-section" id="solo-adultos">
     <svg class="botanical bottom-right" aria-hidden="true"><use href="#sprig"/></svg>
     <p class="section-label">Una nota con mucho cariño</p>
     <div class="adults-note-card reveal">
@@ -265,7 +328,7 @@ a{color:inherit;text-decoration:none}button{font:inherit}img{display:block;max-w
     </div>
   </section>
 
-  <section class="rsvp-section section paper-texture" id="confirmar">
+  <section class="rsvp-section section paper-texture decorated-section" id="confirmar">
     <svg class="botanical bottom-right" aria-hidden="true"><use href="#sprig"/></svg>
     <p class="section-label">Tu presencia es nuestro regalo</p>
     <h2 class="section-title">¿Nos acompañas?</h2>
@@ -380,7 +443,7 @@ a{color:inherit;text-decoration:none}button{font:inherit}img{display:block;max-w
     opening.classList.add('closed');
     musicToggle.classList.add('visible');
     await startMusicProgressively();
-    document.querySelectorAll('.reveal').forEach((el) => { if (el.getBoundingClientRect().top < innerHeight * .9) el.classList.add('in-view'); });
+    document.querySelectorAll('.reveal, .detail-reveal').forEach((el) => { if (el.getBoundingClientRect().top < innerHeight * .9) el.classList.add('in-view'); });
   });
 
   musicToggle.addEventListener('click', toggleMusic);
@@ -389,7 +452,21 @@ a{color:inherit;text-decoration:none}button{font:inherit}img{display:block;max-w
   song.addEventListener('pause', () => setMusicUI(false));
   song.addEventListener('error', () => console.warn('No se pudo cargar audio/nuestra-cancion.mp3'));
 
-  // Subtle reveals: content remains visible if JavaScript or IntersectionObserver is unavailable.
+  // Progressive reveals for headings, captions, cards and small decorative details.
+  // If IntersectionObserver is unavailable, content stays visible and usable.
+  const detailSelector = [
+    '.top-note .monogram', '.top-note .kicker', '.top-note .script',
+    '.hero-heading', '.hero-image-frame', '.photo-caption',
+    '.section-label', '.section-title', '.section-copy',
+    '.calendar-card', '.countdown-card', '.event-card', '.parent-card',
+    '.gallery-card', '.vinyl', '.song-button', '.song-note',
+    '.adults-note-card', '.rsvp-card', '.closing-photo', '.closing h2',
+    '.closing p', '.closing-date'
+  ].join(',');
+  document.querySelectorAll(detailSelector).forEach((el) => {
+    if (!el.classList.contains('reveal')) el.classList.add('detail-reveal');
+  });
+  const revealTargets = document.querySelectorAll('.reveal, .detail-reveal');
   if ('IntersectionObserver' in window) {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
@@ -398,10 +475,22 @@ a{color:inherit;text-decoration:none}button{font:inherit}img{display:block;max-w
           observer.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.12 });
-    document.querySelectorAll('.reveal').forEach((el) => {
+    }, { threshold: 0.14, rootMargin: '0px 0px -4% 0px' });
+    revealTargets.forEach((el, index) => {
       el.classList.add('will-reveal');
+      el.style.setProperty('--reveal-delay', `${(index % 3) * 85}ms`);
       observer.observe(el);
+    });
+    document.querySelectorAll('.decorated-section').forEach((section) => {
+      const sectionObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            section.classList.add('section-seen');
+            sectionObserver.disconnect();
+          }
+        });
+      }, { threshold: 0.1 });
+      sectionObserver.observe(section);
     });
   }
 
@@ -450,4 +539,5 @@ a{color:inherit;text-decoration:none}button{font:inherit}img{display:block;max-w
 </script>
 </body>
 </html>
+
 
