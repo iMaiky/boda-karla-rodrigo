@@ -3,333 +3,430 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#f5f0e6">
-<meta name="description" content="Invitación de boda de Rodrigo & Karla · 12 de diciembre de 2026">
-<title>Rodrigo & Karla · 12.12.2026</title>
+<meta name="theme-color" content="#f7f4ec">
+<meta name="description" content="Rodrigo & Karla · 12 de diciembre de 2026. Una invitación para celebrar nuestra historia de amor.">
+<title>Rodrigo & Karla · Nuestra boda</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Allura&family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{
-  --ivory:#f7f3ea;
-  --paper:#fffdf8;
-  --paper2:#f0eadf;
-  --sage:#7b927f;
-  --sage2:#a9b7a3;
-  --deep:#385346;
-  --forest:#294236;
-  --gold:#b99a63;
-  --ink:#2d302b;
-  --muted:#77766f;
-  --line:rgba(57,83,70,.15);
-  --shadow:0 22px 70px rgba(38,55,45,.13);
-  --serif:"Cormorant Garamond",serif;
-  --script:"Allura",cursive;
-  --sans:"Montserrat",sans-serif;
+  --ivory:#f7f4ec;--paper:#fffdf8;--paper-deep:#eee9de;--sage:#aab8a4;--sage-light:#e3e8dc;
+  --olive:#71866d;--forest:#344d3d;--forest-deep:#263b2e;--gold:#b69b68;--gold-soft:#d9c7a4;
+  --ink:#354037;--muted:#777c70;--line:rgba(83,105,81,.22);--serif:'Cormorant Garamond',Georgia,serif;
+  --script:'Allura','Brush Script MT',cursive;--sans:'Montserrat',Arial,sans-serif;
+  --shadow:0 20px 60px rgba(46,65,49,.10);
 }
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;color:var(--ink);font-family:var(--sans);background:var(--ivory);overflow-x:hidden}
-body.locked{overflow:hidden}
-a{text-decoration:none;color:inherit}
-button{font:inherit}
-img{display:block;max-width:100%}
-
-/* Paper / marble texture */
-body::before,body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:-2}
-body::before{opacity:.35;background:
-  radial-gradient(ellipse at 16% 18%,rgba(130,150,130,.08),transparent 28%),
-  radial-gradient(ellipse at 82% 22%,rgba(184,155,101,.06),transparent 24%),
-  repeating-linear-gradient(112deg,transparent 0 64px,rgba(92,104,93,.028) 64px 66px,transparent 66px 132px),
-  repeating-linear-gradient(76deg,transparent 0 84px,rgba(170,145,104,.024) 84px 86px,transparent 86px 170px)}
-body::after{z-index:-3;background:linear-gradient(180deg,#faf7ef 0%,#f4efe5 50%,#faf7ef 100%)}
-
-/* Opening */
-.opening{position:fixed;inset:0;z-index:5000;display:grid;place-items:center;padding:18px;background:rgba(247,243,234,.98);transition:opacity .9s ease,visibility .9s ease}
-.opening.out{opacity:0;visibility:hidden;pointer-events:none}
-.opening-wrap{position:relative;width:min(438px,94vw);min-height:min(720px,92svh);display:flex;flex-direction:column;justify-content:center;align-items:center;padding:22px 18px 26px;border:1px solid rgba(185,154,99,.30);background:linear-gradient(180deg,rgba(255,254,249,.97),rgba(249,245,236,.97));box-shadow:var(--shadow);overflow:hidden}
-.corner{position:absolute;width:92px;height:92px;border-color:rgba(185,154,99,.38);pointer-events:none}.tl{left:12px;top:12px;border-left:1px solid;border-top:1px solid}.br{right:12px;bottom:12px;border-right:1px solid;border-bottom:1px solid}
-.opening-flower{position:absolute;width:185px;opacity:.2;color:var(--sage);pointer-events:none}.opening-flower.left{left:-26px;bottom:-8px}.opening-flower.right{right:-22px;top:-10px;transform:scaleX(-1)}
-.opening-top{font-size:.62rem;letter-spacing:.24em;text-transform:uppercase;color:var(--deep)}
-.mono{margin-top:10px;color:var(--gold);font:1.25rem var(--serif);letter-spacing:.14em}.mono em{font:1.4em var(--script);font-style:normal}
-.opening-copy{margin:8px 0 16px;font:1.05rem var(--serif);color:var(--muted)}
-.cover-photo{width:min(320px,79vw);padding:8px;background:#fff;box-shadow:0 14px 35px rgba(39,51,43,.12);position:relative}
-.cover-photo img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:50% 55%}
-.cover-photo::after{content:"";position:absolute;inset:6px;border:1px solid rgba(185,154,99,.42);pointer-events:none}
-.script{margin-top:12px;color:var(--sage);font:1.7rem var(--script)}
-.opening h1{margin:0;color:var(--forest);font:500 clamp(3.2rem,13vw,4.9rem)/.82 var(--serif);letter-spacing:-.03em}
-.opening h1 span{color:var(--gold);font:1em var(--script)}
-.date{margin-top:14px;color:var(--gold);font-size:.68rem;letter-spacing:.28em}
-.opening-sub{margin:18px 0 0;color:var(--muted);font-size:.67rem;letter-spacing:.06em}
-.open-btn{margin-top:12px;display:inline-flex;align-items:center;gap:10px;padding:13px 22px;border-radius:999px;background:var(--forest);color:#fffdf8;border:1px solid rgba(185,154,99,.28);cursor:pointer;letter-spacing:.16em;font-size:.62rem;box-shadow:0 12px 28px rgba(41,66,54,.18);transition:.3s}
-.open-btn:hover{transform:translateY(-2px)}
-.open-sign{margin-top:12px;color:#929087;font:1.15rem var(--script)}
-
-/* Floating controls */
-.controls{position:fixed;right:16px;bottom:16px;z-index:3000;display:flex;gap:8px;opacity:0;transform:translateY(10px);pointer-events:none;transition:.4s}
-.controls.visible{opacity:1;transform:none;pointer-events:auto}
-.ctrl{width:48px;height:48px;border-radius:50%;border:1px solid rgba(185,154,99,.28);background:rgba(41,66,54,.94);color:#fffdf8;display:grid;place-items:center;cursor:pointer;box-shadow:0 14px 28px rgba(41,66,54,.2);backdrop-filter:blur(10px)}
-.ctrl .bars{display:flex;align-items:flex-end;gap:2px;height:12px}.ctrl .bars i{width:2px;height:6px;background:#dcc89f;animation:eq .9s ease-in-out infinite paused}.ctrl .bars i:nth-child(2){height:10px;animation-delay:.15s}.ctrl .bars i:nth-child(3){height:7px;animation-delay:.3s}.ctrl.playing .bars i{animation-play-state:running}
-@keyframes eq{50%{transform:scaleY(.45)}}
-
-/* Desktop presentation */
-.shell{max-width:1180px;margin:0 auto;padding:26px 18px 80px}
-.topnav{position:sticky;top:16px;z-index:1200;width:min(100%,1040px);margin:0 auto 14px;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:10px 14px;border:1px solid rgba(185,154,99,.2);background:rgba(255,253,248,.85);backdrop-filter:blur(12px);box-shadow:0 8px 28px rgba(50,61,53,.06)}
-.brand-mini{font:1.25rem var(--script);color:var(--deep)}
-.navlinks{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}.navlinks a{padding:7px 9px;border-radius:999px;color:var(--deep);font-size:.60rem;letter-spacing:.1em;text-transform:uppercase}.navlinks a:hover{background:rgba(123,146,127,.1)}
-main{opacity:0;visibility:hidden;transition:opacity .8s ease,visibility .8s ease}main.ready{opacity:1;visibility:visible}
-
-/* Common */
-.section{width:min(980px,100%);margin:24px auto;border-radius:22px;position:relative;overflow:hidden}
-.card{background:rgba(255,253,248,.90);border:1px solid rgba(185,154,99,.20);box-shadow:var(--shadow)}
-.kicker{font-size:.62rem;letter-spacing:.24em;text-transform:uppercase;color:var(--sage);font-weight:500}.title{margin:8px 0 16px;color:var(--forest);font:500 clamp(3.1rem,7vw,5.5rem)/.88 var(--serif)}.title em{font:1em var(--script);color:var(--gold);font-style:normal}.copy{max-width:650px;margin:0 auto;color:var(--muted);font-size:.92rem;line-height:1.95}
-.ornament{height:1px;width:92px;margin:18px auto;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
-
-/* Hero */
-.hero{min-height:calc(100svh - 20px);display:grid;place-items:center;background:#294236;box-shadow:var(--shadow);overflow:hidden}
-.hero-media{position:absolute;inset:0}.hero-media img{width:100%;height:100%;object-fit:cover;object-position:50% 56%;filter:saturate(.85) contrast(.96)}
-.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(28,45,36,.15),rgba(28,45,36,.52) 65%,rgba(28,45,36,.74))}
-.hero-frame{position:absolute;inset:24px;border:1px solid rgba(247,239,219,.5);z-index:2;pointer-events:none}
-.hero-center{position:relative;z-index:3;text-align:center;color:#fffdf7;width:min(790px,90%);padding:30px 18px}.hero-over{letter-spacing:.34em;text-transform:uppercase;font-size:.66rem;color:#ecdfc0}.hero-monogram{font:2.3rem var(--serif);letter-spacing:.13em;color:#e7d4a7;margin:16px 0 0}.hero-name{margin:4px 0 14px;font:500 clamp(4.4rem,11vw,8rem)/.8 var(--serif);letter-spacing:-.03em}.hero-name span{font:1em var(--script);color:#ead5a4}.hero-line{height:1px;width:110px;margin:18px auto;background:#e3cf9d}.hero-date{letter-spacing:.32em;font-size:.72rem;color:#f2e7cc}.hero-phrase{margin:28px auto 0;font:1.32rem/1.5 var(--serif);max-width:560px;color:rgba(255,253,247,.88)}.hero-scroll{display:inline-flex;flex-direction:column;gap:8px;margin-top:38px;color:#fffdf7;font-size:.61rem;letter-spacing:.16em;text-transform:uppercase}.hero-scroll i{width:1px;height:38px;background:#ead8ad;margin:0 auto}
-
-/* Editorial story */
-.story{padding:68px 40px;background:rgba(255,253,248,.92)}
-.story-inner{display:grid;grid-template-columns:1fr 1.06fr;gap:54px;align-items:center}.story-copy{text-align:left}.story-copy .ornament{margin-left:0}.story-photo{position:relative;padding:12px;background:#fff;box-shadow:0 16px 45px rgba(41,66,54,.12);transform:rotate(1deg)}.story-photo img{aspect-ratio:4/5;object-fit:cover}.story-photo::after{content:"";position:absolute;inset:8px;border:1px solid rgba(185,154,99,.35);pointer-events:none}.memory-tag{position:absolute;left:-22px;bottom:22px;padding:9px 14px;background:var(--forest);color:#fffdf8;font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;box-shadow:0 8px 18px rgba(41,66,54,.2)}
-
-/* Details */
-.details{padding:62px 28px;background:linear-gradient(135deg,#fefcf7,#f1ece0)}.details-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:30px}.detail-card{padding:30px 22px;background:rgba(255,255,255,.72);border:1px solid rgba(185,154,99,.20);text-align:center;position:relative}.detail-card::before{content:"";position:absolute;inset:8px;border:1px solid rgba(185,154,99,.15);pointer-events:none}.detail-icon{font:2.3rem var(--serif);color:var(--gold)}.detail-card h3{margin:8px 0 8px;color:var(--forest);font:500 2rem var(--serif)}.detail-card .time{color:var(--sage);font:2.7rem var(--serif)}.detail-card p{color:var(--muted);font-size:.78rem;line-height:1.75}.map-btn{display:inline-block;margin-top:15px;padding:10px 15px;border:1px solid rgba(57,83,70,.22);border-radius:999px;color:var(--deep);font-size:.6rem;letter-spacing:.13em;text-transform:uppercase;background:#fffdf8}
-
-/* Families */
-.families{padding:68px 28px;background:var(--forest);color:#fffdf7}.families .kicker{color:#d9ccad}.families .title{color:#fffdf7}.families-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:30px}.family{padding:28px 20px;text-align:center;border:1px solid rgba(217,204,173,.25);background:rgba(255,255,255,.035)}.family small{display:block;color:#d8cba9;letter-spacing:.18em;text-transform:uppercase;font-size:.57rem}.family h3{margin:12px 0 6px;color:#fffdf7;font:500 2rem var(--serif)}.family p{margin:4px 0;color:rgba(255,253,247,.74);font-size:.76rem}
-
-/* Quote */
-.quote{padding:84px 20px;text-align:center;background:linear-gradient(180deg,#e8eee4,#f8f4ea)}.quote-mark{font:5rem var(--serif);color:var(--gold);line-height:.5}.quote p{margin:18px auto 0;max-width:760px;color:var(--deep);font:500 clamp(2.5rem,6vw,4.7rem)/.95 var(--serif)}.quote p em{font:1em var(--script);color:var(--sage);font-style:normal}
-
-/* Gallery */
-.gallery{padding:68px 28px;background:#fffdf8}.gallery-grid{margin-top:30px;display:grid;grid-template-columns:1.05fr .95fr;grid-template-rows:240px 240px;gap:16px}.gphoto{position:relative;overflow:hidden;background:#dfe5dd}.gphoto img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s ease}.gphoto:hover img{transform:scale(1.05)}.gphoto.big{grid-row:span 2}.gphoto::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(38,51,42,.26));pointer-events:none}
-.gallery-note{margin-top:28px;text-align:center;color:var(--muted);font:1.45rem var(--script)}
-
+html{scroll-behavior:smooth;scroll-padding-top:22px}
+body{margin:0;color:var(--ink);font-family:var(--sans);background:var(--ivory);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0;z-index:-2;pointer-events:none;opacity:.45;background:radial-gradient(ellipse at 9% 8%,rgba(145,167,139,.10),transparent 30%),radial-gradient(ellipse at 92% 27%,rgba(192,167,121,.10),transparent 26%),repeating-linear-gradient(128deg,transparent 0 104px,rgba(120,132,111,.035) 104px 105px,transparent 105px 207px),repeating-linear-gradient(43deg,transparent 0 150px,rgba(181,158,117,.028) 150px 151px,transparent 151px 302px)}
+body::after{content:"";position:fixed;inset:0;z-index:-3;background:linear-gradient(140deg,#fbf9f2 0%,#f2eee4 45%,#faf7ef 100%);pointer-events:none}
+a{color:inherit;text-decoration:none}button{font:inherit}img{display:block;max-width:100%}button:focus-visible,a:focus-visible{outline:2px solid var(--gold);outline-offset:4px}
+.invitation{width:min(100%,820px);margin:0 auto;background:rgba(255,253,248,.38);box-shadow:0 0 90px rgba(77,92,71,.04);overflow:hidden;position:relative}
+.paper-texture{position:relative;isolation:isolate}.paper-texture::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;opacity:.36;background:radial-gradient(ellipse at 15% 22%,rgba(135,157,129,.12),transparent 24%),radial-gradient(ellipse at 80% 76%,rgba(195,174,129,.12),transparent 25%),repeating-linear-gradient(122deg,transparent 0 65px,rgba(98,125,99,.035) 65px 66px,transparent 66px 132px)}
+/* Delicate botanical illustrations, made as vector so they remain crisp on mobile. */
+.botanical{position:absolute;width:145px;height:185px;color:var(--olive);opacity:.46;pointer-events:none;z-index:0}
+.botanical.top-left{top:0;left:0;transform:rotate(-4deg)}.botanical.bottom-right{right:0;bottom:0;transform:rotate(180deg) scale(.9)}
+.flower-corner{position:absolute;width:108px;height:108px;color:var(--sage);opacity:.45;pointer-events:none}
+.kicker{font-size:.61rem;letter-spacing:.23em;text-transform:uppercase;font-weight:500;color:var(--olive);line-height:1.7}
+.script{font-family:var(--script);font-weight:400;color:var(--olive);line-height:.95}
+.serif{font-family:var(--serif);font-weight:400}
+.section{padding:68px clamp(22px,6vw,62px);position:relative;text-align:center}
+.section-label{margin:0 0 13px;color:var(--olive);font-size:.59rem;letter-spacing:.22em;text-transform:uppercase;font-weight:500}
+.section-title{margin:0 auto;color:var(--forest);font:500 clamp(2.6rem,9vw,4.4rem)/.94 var(--serif);letter-spacing:-.025em}
+.section-copy{max-width:520px;margin:20px auto 0;color:#72776d;font:400 1rem/1.9 var(--serif);font-size:1.16rem}
+.rule{width:58px;height:1px;background:var(--gold);margin:24px auto;position:relative}.rule::after{content:"♡";position:absolute;top:50%;left:50%;transform:translate(-50%,-52%);padding:0 8px;background:var(--ivory);color:var(--gold);font-size:.78rem}
+/* Opening envelope */
+.opening{position:fixed;inset:0;z-index:9999;display:grid;place-items:center;padding:max(12px,env(safe-area-inset-top)) 12px max(12px,env(safe-area-inset-bottom));background:rgba(247,244,236,.98);transition:opacity .9s ease,visibility .9s ease;overflow-y:auto}
+.opening.closed{opacity:0;visibility:hidden;pointer-events:none}
+.cover-card{width:min(100%,460px);min-height:min(820px,95svh);max-height:95svh;overflow-y:auto;position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:24px 21px 21px;background:linear-gradient(135deg,rgba(255,254,250,.98),rgba(249,247,239,.96));border:1px solid rgba(182,155,104,.5);box-shadow:0 20px 70px rgba(47,67,49,.14);isolation:isolate}
+.cover-card::before,.cover-card::after{content:"";position:absolute;inset:8px;border:1px solid rgba(182,155,104,.25);pointer-events:none;z-index:-1}.cover-card::after{inset:15px;border-color:rgba(112,134,109,.15)}
+.cover-card .botanical{width:126px;height:160px;opacity:.5}.cover-card .botanical.top-left{top:6px;left:2px}.cover-card .botanical.bottom-right{right:0;bottom:0}
+.cover-eyebrow{margin:4px 0 7px;font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:var(--forest)}
+.cover-intro{margin:0 0 12px;color:#77796d;font:1.24rem var(--serif);font-style:italic}
+.cover-photo{width:min(66%,260px);height:clamp(150px,25svh,220px);padding:6px;margin:0 auto 11px;background:#fff;box-shadow:0 8px 25px rgba(53,77,61,.12);position:relative;transform:rotate(-1deg)}
+.cover-photo img{width:100%;height:100%;object-fit:cover;object-position:50% 48%}
+.cover-photo::after{content:"";position:absolute;inset:4px;border:1px solid rgba(182,155,104,.5);pointer-events:none}
+.cover-pretitle{margin:3px 0 0;font:1.62rem var(--script);color:var(--olive)}
+.cover-names{margin:0;color:var(--forest);font:500 clamp(3.3rem,12.4vw,4.8rem)/.82 var(--serif);letter-spacing:-.04em}
+.cover-names .amp{display:block;color:var(--gold);font:1.5rem var(--script);line-height:1.05;margin:3px 0}
+.cover-date{margin:13px 0 0;color:var(--gold);font-size:.63rem;letter-spacing:.28em;text-transform:uppercase}
+.cover-quote{max-width:260px;margin:13px auto 0;color:#77796f;font:1.06rem/1.45 var(--serif);font-style:italic}
+.open-btn{display:inline-flex;justify-content:center;align-items:center;gap:11px;margin-top:16px;padding:13px 21px;border:1px solid rgba(217,199,164,.55);border-radius:999px;background:var(--forest);color:#fffdf8;box-shadow:0 10px 22px rgba(38,59,46,.18);font-size:.62rem;letter-spacing:.17em;text-transform:uppercase;cursor:pointer;transition:transform .3s,background .3s}
+.open-btn:hover{transform:translateY(-2px);background:var(--forest-deep)}.open-btn .heart{font-size:.9rem;color:#e6d7b7}
+.cover-foot{margin:11px 0 0;color:#969486;font:1.05rem var(--script)}
+/* Floating sound control */
+.music-fab{position:fixed;z-index:2000;right:max(15px,env(safe-area-inset-right));bottom:max(15px,env(safe-area-inset-bottom));width:49px;height:49px;border:1px solid rgba(217,199,164,.42);border-radius:50%;display:grid;place-items:center;background:rgba(52,77,61,.96);color:#fffdf7;box-shadow:0 10px 26px rgba(38,59,46,.2);cursor:pointer;opacity:0;transform:translateY(8px);pointer-events:none;transition:opacity .4s,transform .4s}
+.music-fab.visible{opacity:1;transform:none;pointer-events:auto}.music-fab .bars{display:flex;gap:3px;align-items:center;height:16px}.music-fab i{display:block;width:2px;height:5px;background:#f4ead6;border-radius:3px}.music-fab.playing i{animation:equalize .65s ease-in-out infinite alternate}.music-fab.playing i:nth-child(2){animation-delay:.15s}.music-fab.playing i:nth-child(3){animation-delay:.3s}.music-fab.playing i:nth-child(4){animation-delay:.08s}@keyframes equalize{to{height:15px}}
+/* Page hero */
+.top-note{padding:29px 25px 12px;text-align:center;position:relative}.monogram{width:54px;height:54px;border:1px solid rgba(182,155,104,.58);border-radius:50%;margin:0 auto 14px;display:flex;align-items:center;justify-content:center;gap:0;white-space:nowrap;color:var(--olive);font:1.65rem/1 var(--script);background:rgba(255,253,248,.7)}.monogram span{display:inline-block;font:1rem/1 var(--serif);color:var(--gold);margin:0 -1px}
+.hero{padding:4px clamp(17px,5vw,45px) 60px;position:relative;text-align:center}.hero-heading{position:relative;z-index:2;margin:0 auto 20px}.hero-heading .eyebrow{margin:0 0 12px}.hero-names{margin:0;color:var(--forest);font:500 clamp(3.8rem,13.5vw,7.2rem)/.75 var(--serif);letter-spacing:-.045em}.hero-names .amp{display:block;font:2rem var(--script);color:var(--gold);line-height:1.15;margin:4px 0}.hero-date-line{margin:21px 0 0;font-size:.68rem;letter-spacing:.24em;color:var(--olive)}
+.hero-image-frame{width:min(100%,540px);margin:0 auto;position:relative;padding:9px;background:#fff;box-shadow:var(--shadow);transform:rotate(.3deg)}.hero-image-frame::before{content:"";position:absolute;inset:5px;border:1px solid rgba(182,155,104,.52);pointer-events:none;z-index:1}.hero-image-frame img{width:100%;height:clamp(280px,68vw,500px);max-height:530px;object-fit:cover;object-position:50% 60%}.photo-caption{font:1.65rem var(--script);color:var(--olive);margin:17px 0 0}
+.verse-panel{background:var(--forest);color:#fffdf7;margin:0 17px;padding:43px 24px;position:relative;box-shadow:var(--shadow);overflow:hidden}.verse-panel::before{content:"";position:absolute;inset:8px;border:1px solid rgba(224,211,181,.38);pointer-events:none}.verse-panel .quote-mark{font:3rem var(--serif);color:#d9c7a4;line-height:.5}.verse-panel p{max-width:470px;position:relative;margin:17px auto 0;font:italic clamp(1.65rem,5.5vw,2.2rem)/1.26 var(--serif);color:#fbf6ec}.verse-panel small{display:block;position:relative;margin-top:20px;color:#d9d1be;font-size:.57rem;letter-spacing:.2em;text-transform:uppercase}
+/* Story photo */
+.story{padding-top:76px}.story-photo-wrap{width:min(100%,420px);margin:32px auto 0;position:relative;padding:10px 10px 34px;background:#fff;box-shadow:var(--shadow);transform:rotate(-.8deg)}.story-photo-wrap img{width:100%;height:clamp(320px,95vw,465px);object-fit:cover;object-position:50% 48%}.story-photo-wrap::after{content:"R & K · Siempre nosotros";position:absolute;bottom:9px;left:0;right:0;text-align:center;color:var(--olive);font:1.25rem var(--script)}
+/* Calendar */
+.calendar-section{padding-top:74px;padding-bottom:74px;background:linear-gradient(180deg,rgba(226,232,220,.42),rgba(247,244,236,.5))}.calendar-card{width:min(100%,480px);margin:30px auto 0;padding:26px 18px 24px;position:relative;background:linear-gradient(145deg,#fffef9,#f8f5eb);border:1px solid rgba(182,155,104,.5);box-shadow:0 18px 45px rgba(48,69,51,.10)}.calendar-card::before{content:"";position:absolute;inset:7px;border:1px solid rgba(112,134,109,.21);pointer-events:none}.calendar-head{position:relative;display:flex;justify-content:space-between;align-items:flex-end;padding:0 6px 20px;border-bottom:1px solid var(--line)}.calendar-head .month-script{display:block;text-align:left;font:2.7rem/.9 var(--script);color:var(--olive)}.calendar-head .year{display:block;margin-top:5px;font-size:.62rem;letter-spacing:.23em;color:var(--gold)}.calendar-stamp{width:62px;height:62px;border:1px solid rgba(182,155,104,.66);border-radius:50%;display:grid;place-items:center;white-space:nowrap;color:var(--gold);font:1.12rem/1 var(--script);transform:rotate(7deg)}
+.calendar-grid{position:relative;display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:4px;margin-top:16px}.calendar-grid .weekday{padding:7px 0;color:var(--olive);font-size:.61rem;font-weight:600}.calendar-grid .day{position:relative;aspect-ratio:1/1;min-width:0;display:flex;align-items:center;justify-content:center;color:#5c655a;font:1rem var(--serif);border-radius:50%;font-variant-numeric:tabular-nums}.calendar-grid .day.empty{visibility:hidden}.calendar-grid .day.wedding-day{background:var(--forest);color:#fffdf6;font-weight:600;box-shadow:0 4px 12px rgba(38,59,46,.2)}.calendar-grid .day.wedding-day::after{content:"♥";position:absolute;right:0;top:-3px;color:var(--gold);font-size:.65rem}.calendar-legend{margin:15px 0 0;color:var(--muted);font:1.27rem var(--script)}
+.outline-btn,.solid-btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;min-height:46px;padding:13px 19px;border-radius:999px;font-size:.63rem;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;transition:transform .25s,background .25s;line-height:1.2}.outline-btn{background:transparent;border:1px solid rgba(83,105,81,.4);color:var(--forest)}.solid-btn{background:var(--forest);border:1px solid var(--forest);color:#fffdf6;box-shadow:0 10px 23px rgba(38,59,46,.12)}.outline-btn:hover,.solid-btn:hover{transform:translateY(-2px)}.calendar-btn{margin-top:22px}
+.countdown-card{max-width:480px;margin:18px auto 0;padding:22px 15px 20px;position:relative;background:var(--forest);color:#fffdf7;border:1px solid rgba(182,155,104,.66);box-shadow:0 14px 32px rgba(38,59,46,.12)}.countdown-card::before{content:"";position:absolute;inset:6px;border:1px solid rgba(217,199,164,.28);pointer-events:none}.countdown-title{position:relative;margin:0 0 17px;color:#e4d5b5;font:1.65rem/1 var(--script)}.countdown-grid{position:relative;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:5px}.countdown-unit{padding:8px 1px 5px;border-right:1px solid rgba(217,199,164,.18)}.countdown-unit:last-child{border-right:0}.countdown-unit strong{display:block;color:#f4e8cf;font:500 clamp(1.6rem,6vw,2.2rem)/1 var(--serif);font-variant-numeric:tabular-nums}.countdown-unit span{display:block;margin-top:7px;color:rgba(255,253,247,.72);font-size:.48rem;letter-spacing:.1em;text-transform:uppercase}.countdown-message{position:relative;margin:14px 0 0;color:rgba(255,253,247,.74);font-size:.58rem;letter-spacing:.09em}
+/* Event cards */
+.details-section{padding-top:74px;padding-bottom:75px}.details-intro{max-width:500px;margin:17px auto 0;font:1.15rem/1.75 var(--serif);color:var(--muted)}.event-list{display:grid;gap:20px;max-width:560px;margin:35px auto 0;text-align:left}.event-card{display:grid;grid-template-columns:82px 1fr;gap:18px;align-items:stretch;padding:17px;background:rgba(255,253,248,.82);border:1px solid rgba(182,155,104,.34);box-shadow:0 10px 30px rgba(53,77,61,.055)}.event-time{background:var(--sage-light);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;color:var(--forest);min-height:130px}.event-time strong{font:2.15rem/.95 var(--serif);font-weight:500}.event-time span{margin-top:7px;font-size:.55rem;letter-spacing:.12em}.event-info{align-self:center;padding:6px 0}.event-number{font-size:.55rem;text-transform:uppercase;letter-spacing:.18em;color:var(--gold)}.event-info h3{margin:7px 0 6px;color:var(--forest);font:500 1.8rem/1 var(--serif)}.event-info p{margin:0;color:#777b70;font-size:.77rem;line-height:1.65}.event-info .solid-btn{margin-top:13px;min-height:38px;padding:10px 15px;font-size:.55rem}
+/* Parents */
+.family-section{background:rgba(226,232,220,.46);padding-top:68px;padding-bottom:70px}.parents-grid{display:grid;gap:14px;grid-template-columns:1fr 1fr;max-width:620px;margin:34px auto 0}.parent-card{position:relative;background:rgba(255,253,248,.87);border:1px solid rgba(182,155,104,.36);padding:27px 12px 25px;min-height:190px;display:flex;flex-direction:column;justify-content:center}.parent-card::before{content:"";position:absolute;inset:6px;border:1px solid rgba(112,134,109,.19);pointer-events:none}.parent-label{font-size:.56rem;text-transform:uppercase;letter-spacing:.15em;color:var(--olive);line-height:1.5}.parent-card h3{font:500 clamp(1.28rem,4.3vw,1.75rem)/1.05 var(--serif);color:var(--forest);margin:18px 0 0}.parent-card .and{font:1.45rem var(--script);color:var(--gold);margin:3px 0}
+/* Photo gallery */
+.gallery-section{padding-top:75px;padding-bottom:76px}.gallery-grid{display:grid;grid-template-columns:1fr 1fr;align-items:start;gap:16px;max-width:600px;margin:33px auto 0}.gallery-card{padding:7px 7px 25px;background:#fff;box-shadow:0 11px 26px rgba(47,67,49,.11);position:relative}.gallery-card:nth-child(1){transform:rotate(-1.2deg);margin-top:21px}.gallery-card:nth-child(2){transform:rotate(1deg)}.gallery-card img{width:100%;height:clamp(190px,53vw,310px);object-fit:cover}.gallery-card:first-child img{object-position:50% 53%}.gallery-card:nth-child(2) img{object-position:50% 50%}.gallery-caption{position:absolute;bottom:4px;left:0;right:0;color:var(--olive);font:1.2rem var(--script)}
 /* Music */
-.music{padding:76px 28px;background:linear-gradient(145deg,#f7f2e8,#e9eee6);text-align:center}.vinyl{width:92px;height:92px;margin:0 auto 22px;border-radius:50%;background:radial-gradient(circle,#d9c7a4 0 8px,#4d6556 9px 24px,#26382f 25px 44px,#18251f 45px);box-shadow:0 14px 24px rgba(38,53,44,.18);position:relative;animation:spin 8s linear infinite paused}.music.playing .vinyl{animation-play-state:running}.vinyl::after{content:"";position:absolute;inset:44px;width:4px;height:4px;border-radius:50%;background:#fff8e9}.song-name{font:500 2.5rem var(--serif);color:var(--forest)}.song-hint{margin-top:6px;color:var(--muted);font-size:.7rem;letter-spacing:.05em}.song-btn{margin-top:18px;padding:12px 18px;border:1px solid rgba(57,83,70,.2);border-radius:999px;background:#fffdf8;color:var(--deep);cursor:pointer;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase}
-@keyframes spin{to{transform:rotate(360deg)}}
-
-/* Countdown */
-.countdown{padding:72px 28px;background:#fefcf7;text-align:center}.count-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:28px}.count-cell{padding:18px 8px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}.count-num{display:block;color:var(--deep);font:500 clamp(2.6rem,5vw,4.4rem) var(--serif)}.count-label{display:block;margin-top:4px;color:var(--sage);font-size:.55rem;letter-spacing:.16em;text-transform:uppercase}
-
-/* RSVP */
-.rsvp{padding:82px 28px;text-align:center;background:linear-gradient(180deg,#edf1ea,#f8f4eb)}.rsvp .title{margin-bottom:10px}.rsvp-copy{max-width:600px;margin:0 auto;color:var(--muted);line-height:1.8;font-size:.82rem}.rsvp-btn{display:inline-flex;align-items:center;gap:9px;margin-top:22px;padding:14px 21px;border-radius:999px;background:var(--forest);color:#fffdf8;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;box-shadow:0 12px 24px rgba(41,66,54,.18)}
-
-/* Footer */
-.footer{position:relative;overflow:hidden;padding:92px 20px;text-align:center;color:#fffdf7;background:#314c3f}.footer-bg{position:absolute;inset:0;background:linear-gradient(180deg,rgba(35,58,47,.5),rgba(35,58,47,.86)),url('images/portada.jpeg') center/cover no-repeat;filter:saturate(.7)}.footer-inner{position:relative;z-index:2}.footer .title{color:#fffdf7}.footer .title em{color:#e3d0a7}.footer-date{color:#e5d5b2;letter-spacing:.28em;font-size:.66rem}.thanks{margin-top:24px;font:1.5rem var(--script);color:#f0e5c9}.brand{margin-top:46px;display:grid;gap:5px}.brand span{color:rgba(255,253,247,.55);font-size:.54rem;letter-spacing:.14em;text-transform:uppercase}.brand strong{color:#e4d4aa;font-size:.68rem;letter-spacing:.25em}.brand small{color:rgba(255,253,247,.5);font-size:.55rem}
-
-/* reveal */
-.reveal{opacity:0;transform:translateY(28px);transition:opacity .85s ease,transform .85s cubic-bezier(.2,.8,.2,1)}.reveal.show{opacity:1;transform:none}
-
-@media(max-width:760px){
-  .shell{padding:10px 10px 60px}.topnav{position:fixed;left:10px;right:10px;top:10px;width:auto;margin:0;border-radius:999px;padding:8px 10px}.navlinks{display:none}.brand-mini{font-size:1.15rem}.section{margin:12px auto;border-radius:18px}.hero{min-height:calc(100svh - 20px);border-radius:18px}.hero-frame{inset:16px}.story{padding:52px 18px}.story-inner{grid-template-columns:1fr;gap:28px}.story-copy{text-align:center}.story-copy .ornament{margin-inline:auto}.story-photo{max-width:380px;margin:0 auto}.details{padding:54px 16px}.details-grid{grid-template-columns:1fr}.families{padding:54px 16px}.families-grid{grid-template-columns:1fr}.gallery{padding:54px 16px}.gallery-grid{grid-template-columns:1fr 1fr;grid-template-rows:210px 210px}.gphoto.big{grid-row:span 2}.music{padding:62px 18px}.countdown{padding:58px 16px}.count-grid{grid-template-columns:repeat(2,1fr)}.rsvp{padding:64px 18px}.footer{padding:78px 16px}.controls{right:12px;bottom:12px}.opening-wrap{min-height:min(720px,94svh)}
-}
-@media(max-width:430px){.title{font-size:3.3rem}.hero-name{font-size:4.4rem}.hero-phrase{font-size:1.18rem}.cover-photo{width:74vw}.opening-wrap{padding-inline:15px}.story-photo{transform:none}.gphoto.big{grid-column:1/3}.gallery-grid{grid-template-rows:210px 160px 160px}.gallery-note{font-size:1.3rem}}
+.song-section{background:var(--forest);color:#fffdf7;padding-top:62px;padding-bottom:62px;overflow:hidden}.song-section .section-label{color:#d9c7a4}.song-section .section-title{color:#fffaf0}.song-section .section-copy{color:rgba(255,253,247,.78)}.vinyl{width:104px;height:104px;margin:28px auto 22px;border-radius:50%;position:relative;display:grid;place-items:center;background:repeating-radial-gradient(circle at center,#27392d 0 4px,#314a39 5px 6px,#27392d 7px 8px);box-shadow:0 9px 24px rgba(0,0,0,.18);border:1px solid rgba(218,199,164,.7)}.vinyl::before{content:"";position:absolute;inset:26px;border-radius:50%;background:#d9c7a4;border:4px solid rgba(255,255,255,.22)}.vinyl::after{content:"♡";position:relative;z-index:1;color:var(--forest);font:1.7rem var(--script)}.song-button{margin-top:22px;background:transparent;border:1px solid rgba(217,199,164,.6);color:#fffdf7}.song-note{font:.94rem var(--script);color:#d9c7a4;margin:20px 0 0}
+/* RSVP and close */
+.rsvp-section{padding-top:75px;padding-bottom:78px}.rsvp-card{max-width:580px;margin:30px auto 0;padding:38px 22px;background:linear-gradient(150deg,#fffefa,#f0eee3);border:1px solid rgba(182,155,104,.5);box-shadow:var(--shadow);position:relative}.rsvp-card::before{content:"";position:absolute;inset:7px;border:1px solid rgba(112,134,109,.2);pointer-events:none}.rsvp-heart{font:2.2rem var(--script);color:var(--gold)}.rsvp-card h3{margin:8px 0 0;font:500 clamp(2.3rem,7vw,3.4rem)/.95 var(--serif);color:var(--forest)}.rsvp-card p{position:relative;max-width:380px;margin:16px auto 0;font:1.08rem/1.75 var(--serif);color:var(--muted)}.rsvp-card .solid-btn{position:relative;margin-top:22px}
+.closing{position:relative;overflow:hidden;text-align:center;padding:58px 22px 72px;background:linear-gradient(155deg,#e3e9df,#f7f3e9 70%)}.closing .closing-photo{width:min(68%,290px);margin:0 auto 25px;padding:7px;background:#fff;box-shadow:0 12px 35px rgba(47,67,49,.13);transform:rotate(1deg)}.closing-photo img{width:100%;height:clamp(190px,50vw,300px);object-fit:cover;object-position:50% 55%}.closing h2{margin:0;font:500 clamp(3.2rem,11vw,5.2rem)/.8 var(--serif);color:var(--forest)}.closing h2 span{display:block;margin:5px 0;color:var(--gold);font:2rem var(--script)}.closing p{margin:22px 0 0;color:var(--olive);font:1.55rem/1.2 var(--script)}.closing-date{display:block;margin-top:18px;color:var(--gold);font-size:.62rem;letter-spacing:.25em}
+.site-footer{padding:17px 12px;text-align:center;color:#969789;font-size:.55rem;letter-spacing:.1em;background:#f7f3e9}
+/* Reveal is progressive enhancement only: if JS fails, content remains visible. */
+.will-reveal{opacity:0;transform:translateY(18px);transition:opacity .75s ease,transform .75s cubic-bezier(.2,.7,.2,1)}.will-reveal.in-view{opacity:1;transform:none}
+@media(min-width:700px){.section{padding-top:88px;padding-bottom:88px}.hero{padding-top:14px}.top-note{padding-top:37px}.verse-panel{margin:0 44px;padding:52px 36px}.event-list{grid-template-columns:1fr 1fr;max-width:100%;align-items:stretch}.event-card{grid-template-columns:1fr;gap:12px}.event-time{min-height:82px;flex-direction:row;gap:8px}.event-time span{margin-top:0}.event-info{padding:6px 4px 7px}.event-info .solid-btn{white-space:nowrap}.parent-card{min-height:225px}.calendar-card{padding:32px 35px}.calendar-grid{gap:8px}.calendar-grid .day{font-size:1.12rem}}
+@media(max-height:690px){.cover-card{min-height:0;padding:20px 18px}.cover-photo{height:clamp(125px,22svh,170px);width:min(58%,220px)}.cover-intro{font-size:1.08rem}.cover-names{font-size:3.5rem}.cover-quote{font-size:.98rem;margin-top:9px}.open-btn{margin-top:12px;padding:11px 18px}}
+@media(max-width:380px){.section{padding-left:17px;padding-right:17px}.cover-card{padding-left:14px;padding-right:14px}.cover-photo{width:68%;height:clamp(130px,24svh,190px)}.event-card{grid-template-columns:70px 1fr;gap:13px;padding:11px}.event-time strong{font-size:1.85rem}.event-info h3{font-size:1.55rem}.parents-grid{gap:9px}.parent-card{padding-left:8px;padding-right:8px}.parent-label{letter-spacing:.1em}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
 </style>
 </head>
-<body class="locked">
+<body>
+<!-- Decorative botanical SVG used in several sections. -->
+<svg aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden" xmlns="http://www.w3.org/2000/svg">
+  <symbol id="sprig" viewBox="0 0 160 210">
+    <g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M10 205C42 164 57 121 68 72 72 52 76 28 74 8"/>
+      <path d="M31 170C14 150 12 133 16 120 31 126 42 141 31 170Z" fill="currentColor" fill-opacity=".12"/>
+      <path d="M43 148C63 139 73 123 72 106 55 108 42 123 43 148Z" fill="currentColor" fill-opacity=".14"/>
+      <path d="M55 115C35 101 32 83 39 68 55 78 64 95 55 115Z" fill="currentColor" fill-opacity=".13"/>
+      <path d="M67 83C87 73 95 58 92 42 76 46 65 61 67 83Z" fill="currentColor" fill-opacity=".14"/>
+      <path d="M72 55C56 40 57 23 67 11 79 25 83 40 72 55Z" fill="currentColor" fill-opacity=".1"/>
+      <path d="M20 187C42 184 56 191 60 204 44 211 28 202 20 187Z" fill="currentColor" fill-opacity=".1"/>
+      <path d="M66 72C88 76 101 66 106 51 91 45 75 53 66 72Z" fill="currentColor" fill-opacity=".1"/>
+      <path d="M54 119C78 125 91 116 98 102 82 93 64 102 54 119Z" fill="currentColor" fill-opacity=".1"/>
+    </g>
+  </symbol>
+</svg>
 
-<!-- OPENING -->
-<div class="opening" id="opening" role="dialog" aria-modal="true" aria-label="Abrir invitación">
-  <div class="opening-wrap">
-    <div class="corner tl"></div><div class="corner br"></div>
-    <svg class="opening-flower left" viewBox="0 0 220 500" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2"><path d="M190 495C145 395 107 300 90 205C77 128 120 55 186 12"/><path d="M149 405C112 347 74 322 30 306"/><path d="M119 324C80 270 62 214 56 165"/></g><g fill="currentColor"><ellipse cx="145" cy="410" rx="30" ry="9" transform="rotate(50 145 410)"/><ellipse cx="111" cy="350" rx="28" ry="8" transform="rotate(66 111 350)"/><ellipse cx="84" cy="290" rx="28" ry="8" transform="rotate(80 84 290)"/><ellipse cx="74" cy="225" rx="27" ry="8" transform="rotate(100 74 225)"/><ellipse cx="92" cy="155" rx="28" ry="8" transform="rotate(125 92 155)"/></g></svg>
-    <svg class="opening-flower right" viewBox="0 0 220 500" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2"><path d="M190 495C145 395 107 300 90 205C77 128 120 55 186 12"/><path d="M149 405C112 347 74 322 30 306"/><path d="M119 324C80 270 62 214 56 165"/></g><g fill="currentColor"><ellipse cx="145" cy="410" rx="30" ry="9" transform="rotate(50 145 410)"/><ellipse cx="111" cy="350" rx="28" ry="8" transform="rotate(66 111 350)"/><ellipse cx="84" cy="290" rx="28" ry="8" transform="rotate(80 84 290)"/><ellipse cx="74" cy="225" rx="27" ry="8" transform="rotate(100 74 225)"/><ellipse cx="92" cy="155" rx="28" ry="8" transform="rotate(125 92 155)"/></g></svg>
-    <div class="opening-top">Una historia para celebrar</div>
-    <div class="mono">R <em>&amp;</em> K</div>
-    <div class="opening-copy">El amor nos trajo hasta aquí</div>
-    <div class="cover-photo"><img src="images/portada.jpeg" alt="Rodrigo y Karla junto al mar"></div>
-    <div class="script">Con alegría en el corazón</div>
-    <h1>Rodrigo <span>&amp;</span> Karla</h1>
-    <div class="date">12 · DICIEMBRE · 2026</div>
-    <div class="opening-sub">Toca para abrir nuestra historia</div>
-    <button class="open-btn" id="openBtn"><span>♡</span> ABRIR INVITACIÓN</button>
-    <div class="open-sign">Con amor, Rodrigo &amp; Karla</div>
+<div class="opening" id="opening" aria-label="Portada de la invitación">
+  <div class="cover-card paper-texture">
+    <svg class="botanical top-left" aria-hidden="true"><use href="#sprig"/></svg>
+    <svg class="botanical bottom-right" aria-hidden="true"><use href="#sprig"/></svg>
+    <p class="cover-eyebrow">Con la bendición de Dios</p>
+    <p class="cover-intro">Una historia para celebrar</p>
+    <div class="cover-photo"><img src="images/historia.jpeg" alt="Rodrigo y Karla sonriendo juntos en la playa"></div>
+    <p class="cover-pretitle">dos corazones, un mismo destino</p>
+    <h1 class="cover-names">Rodrigo <span class="amp">&</span> Karla</h1>
+    <p class="cover-date">12 · diciembre · 2026</p>
+    <p class="cover-quote">“El amor nos trajo hasta aquí; ahora comienza nuestro para siempre.”</p>
+    <button class="open-btn" id="openInvite" type="button"><span class="heart">♡</span> Abrir invitación <span aria-hidden="true">↗</span></button>
+    <p class="cover-foot">Nos haría muy felices compartirlo contigo</p>
   </div>
 </div>
 
-<audio id="music" preload="auto" loop playsinline><source src="audio/nuestra-cancion.mp3" type="audio/mpeg"></audio>
-<div class="controls" id="controls"><button class="ctrl" id="musicCtrl" aria-label="Pausar música"><span class="bars"><i></i><i></i><i></i></span></button><button class="ctrl" id="topCtrl" aria-label="Volver arriba">↑</button></div>
+<audio id="weddingSong" preload="auto" loop playsinline>
+  <source src="audio/nuestra-cancion.mp3" type="audio/mpeg">
+</audio>
+<button class="music-fab" id="musicToggle" type="button" aria-label="Reproducir o pausar nuestra canción" title="Nuestra canción"><span class="bars" aria-hidden="true"><i></i><i></i><i></i><i></i></span></button>
 
-<main id="site">
-<div class="shell">
-  <div class="topnav">
-    <div class="brand-mini">Rodrigo &amp; Karla</div>
-    <div class="navlinks">
-      <a href="#historia">Historia</a><a href="#detalles">Detalles</a><a href="#familias">Familias</a><a href="#galeria">Fotos</a><a href="#confirmacion">RSVP</a>
+<main class="invitation" id="invitation">
+  <header class="top-note paper-texture">
+    <div class="monogram" aria-hidden="true">R<span style="font-size:1.1rem;color:var(--gold)">&</span>K</div>
+    <p class="kicker">Una historia para celebrar</p>
+    <p class="script" style="font-size:2rem;margin:8px 0 0">El amor nos trajo hasta aquí</p>
+  </header>
+
+  <section class="hero paper-texture">
+    <svg class="botanical top-left" aria-hidden="true"><use href="#sprig"/></svg>
+    <div class="hero-heading">
+      <p class="section-label">¡Nos casamos!</p>
+      <h2 class="hero-names">Rodrigo <span class="amp">&</span> Karla</h2>
+      <p class="hero-date-line">SÁBADO · 12 DE DICIEMBRE · 2026</p>
     </div>
-  </div>
+    <figure class="hero-image-frame">
+      <img src="images/portada.jpeg" alt="Rodrigo y Karla abrazados frente al atardecer en la playa" fetchpriority="high">
+    </figure>
+    <p class="photo-caption">Y así comienza nuestro para siempre…</p>
+  </section>
 
-  <section class="section hero">
-    <div class="hero-media"><img src="images/portada.jpeg" alt="Rodrigo y Karla en la playa"></div>
-    <div class="hero-frame"></div>
-    <div class="hero-center reveal">
-      <div class="hero-over">Nos casamos</div>
-      <div class="hero-monogram">R &amp; K</div>
-      <div class="hero-name">Rodrigo <span>&amp;</span> Karla</div>
-      <div class="hero-line"></div>
-      <div class="hero-date">12 · DICIEMBRE · 2026</div>
-      <div class="hero-phrase">Dos corazones, una promesa y toda una vida por compartir.</div>
-      <div class="hero-scroll">Desliza<i></i></div>
+  <section class="section">
+    <div class="verse-panel reveal">
+      <span class="quote-mark" aria-hidden="true">“</span>
+      <p>El amor es tener a alguien con quien soñar, caminar de la mano y elegirnos todos los días.</p>
+      <small>Con todo nuestro amor</small>
     </div>
   </section>
 
-  <section class="section card story" id="historia">
-    <div class="story-inner">
-      <div class="story-copy reveal">
-        <div class="kicker">Nuestra historia</div>
-        <div class="title">Dos caminos,<br><em>un mismo destino.</em></div>
-        <div class="ornament"></div>
-        <p class="copy">Hay encuentros que llegan sin avisar y terminan convirtiéndose en el lugar al que siempre queremos volver.</p>
-        <p class="copy" style="margin-top:14px">Hoy queremos compartir contigo uno de los días más importantes de nuestras vidas: el día en que elegimos caminar juntos para siempre.</p>
-        <div class="script" style="margin-top:18px">Con amor, Rodrigo &amp; Karla</div>
+  <section class="section story paper-texture">
+    <svg class="botanical bottom-right" aria-hidden="true"><use href="#sprig"/></svg>
+    <p class="section-label">Nuestra historia</p>
+    <h2 class="section-title">Un sí para <span class="script" style="font-size:1.15em">toda la vida</span></h2>
+    <p class="section-copy">Hay encuentros que cambian el rumbo de nuestros días. El nuestro se convirtió en una historia llena de pequeños instantes, sueños compartidos y un amor que hoy queremos celebrar contigo.</p>
+    <figure class="story-photo-wrap reveal"><img src="images/historia.jpeg" alt="Una fotografía espontánea de Rodrigo y Karla juntos" loading="lazy"></figure>
+    <p class="script" style="font-size:2rem;margin:28px 0 0">Nuestro capítulo favorito empieza ahora.</p>
+  </section>
+
+  <section class="calendar-section section paper-texture" id="fecha">
+    <svg class="botanical top-left" aria-hidden="true"><use href="#sprig"/></svg>
+    <p class="section-label">Guarda la fecha</p>
+    <h2 class="section-title">Un día para <span class="script" style="font-size:1.12em">recordar</span></h2>
+    <p class="section-copy">Queremos que este día tenga un lugar especial en tu calendario y, sobre todo, en tu corazón.</p>
+    <div class="calendar-card reveal" aria-label="Calendario de diciembre de 2026">
+      <div class="calendar-head">
+        <div><span class="month-script">Diciembre</span><span class="year">DOS MIL VEINTISÉIS</span></div>
+        <div class="calendar-stamp" aria-hidden="true">R ♥ K</div>
       </div>
-      <div class="story-photo reveal"><img src="images/historia.jpeg" alt="Rodrigo y Karla en la playa"><div class="memory-tag">Un recuerdo para siempre</div></div>
+      <div class="calendar-grid" role="grid" aria-label="Diciembre de 2026">
+        <span class="weekday" role="columnheader">L</span><span class="weekday" role="columnheader">M</span><span class="weekday" role="columnheader">X</span><span class="weekday" role="columnheader">J</span><span class="weekday" role="columnheader">V</span><span class="weekday" role="columnheader">S</span><span class="weekday" role="columnheader">D</span>
+        <span class="day empty" aria-hidden="true"></span><span class="day">1</span><span class="day">2</span><span class="day">3</span><span class="day">4</span><span class="day">5</span><span class="day">6</span>
+        <span class="day">7</span><span class="day">8</span><span class="day">9</span><span class="day">10</span><span class="day">11</span><span class="day wedding-day" aria-label="Sábado 12 de diciembre de 2026, día de la boda" aria-current="date">12</span><span class="day">13</span>
+        <span class="day">14</span><span class="day">15</span><span class="day">16</span><span class="day">17</span><span class="day">18</span><span class="day">19</span><span class="day">20</span>
+        <span class="day">21</span><span class="day">22</span><span class="day">23</span><span class="day">24</span><span class="day">25</span><span class="day">26</span><span class="day">27</span>
+        <span class="day">28</span><span class="day">29</span><span class="day">30</span><span class="day">31</span><span class="day empty" aria-hidden="true"></span><span class="day empty" aria-hidden="true"></span><span class="day empty" aria-hidden="true"></span>
+      </div>
+      <p class="calendar-legend">♡ El día en que diremos “sí, acepto”</p>
+    </div>
+    <div class="countdown-card reveal" aria-label="Cuenta regresiva para la boda">
+      <p class="countdown-title">Cada día nos acerca…</p>
+      <div class="countdown-grid">
+        <div class="countdown-unit"><strong id="countDays">--</strong><span>Días</span></div>
+        <div class="countdown-unit"><strong id="countHours">--</strong><span>Horas</span></div>
+        <div class="countdown-unit"><strong id="countMinutes">--</strong><span>Minutos</span></div>
+        <div class="countdown-unit"><strong id="countSeconds">--</strong><span>Segundos</span></div>
+      </div>
+      <p class="countdown-message" id="countMessage">Hasta que llegue nuestro gran día</p>
+    </div>
+    <button class="outline-btn calendar-btn" id="saveCalendar" type="button">♡ Guardar la fecha en mi calendario</button>
+  </section>
+
+  <section class="details-section section" id="detalles">
+    <p class="section-label">Nos encantará tenerte cerca</p>
+    <h2 class="section-title">Acompáñanos <span class="script" style="font-size:1.1em">a celebrar</span></h2>
+    <p class="details-intro">Dos momentos, una promesa y la alegría de compartirlo con las personas que queremos.</p>
+    <div class="event-list">
+      <article class="event-card reveal">
+        <div class="event-time"><strong>13:00</strong><span>CEREMONIA</span></div>
+        <div class="event-info"><span class="event-number">01 · La unión</span><h3>Ceremonia religiosa</h3><p>Capilla Católica Virgen de Guadalupe<br>Km 15</p><a class="solid-btn" href="https://www.google.com/maps/search/?api=1&query=Capilla+Catolica+Virgen+de+Guadalupe+Km+15" target="_blank" rel="noopener noreferrer">Ver ubicación ↗</a></div>
+      </article>
+      <article class="event-card reveal">
+        <div class="event-time"><strong>16:00</strong><span>RECEPCIÓN</span></div>
+        <div class="event-info"><span class="event-number">02 · La celebración</span><h3>Casa Quinta Reinaga</h3><p>Kilómetro 20<br>Carretera Antigua a Cochabamba</p><a class="solid-btn" href="https://www.google.com/maps/search/?api=1&query=Casa+Quinta+Reinaga+Kilometro+20+Carretera+Antigua+a+Cochabamba" target="_blank" rel="noopener noreferrer">Cómo llegar ↗</a></div>
+      </article>
     </div>
   </section>
 
-  <section class="section quote reveal">
-    <div class="quote-mark">“</div>
-    <p>Que nunca nos falten<br><em>motivos para elegirnos.</em></p>
-    <div class="quote-mark">”</div>
-  </section>
-
-  <section class="section details card" id="detalles">
-    <div style="text-align:center" class="reveal">
-      <div class="kicker">El gran día</div>
-      <div class="title">Celebremos <em>juntos.</em></div>
-      <p class="copy">Con mucha ilusión queremos compartir contigo cada momento de este día tan especial.</p>
-    </div>
-    <div class="details-grid">
-      <article class="detail-card reveal"><div class="detail-icon">♡</div><div class="kicker">Ceremonia religiosa</div><div class="time">13:00</div><h3>Virgen de Guadalupe</h3><p>Capilla Católica<br>KM 15</p><a class="map-btn" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Capilla%20Catolica%20Virgen%20de%20Guadalupe%20Km%2015">Ver ubicación</a></article>
-      <article class="detail-card reveal"><div class="detail-icon">✦</div><div class="kicker">Recepción</div><div class="time">16:00</div><h3>Casa Quinta Reinaga</h3><p>Kilómetro 20<br>Carretera Antigua a Cochabamba</p><a class="map-btn" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Casa%20Quinta%20Reinaga%20Kilometro%2020%20Carretera%20Antigua%20a%20Cochabamba">Cómo llegar</a></article>
+  <section class="family-section section paper-texture">
+    <p class="section-label">Con la bendición de nuestras familias</p>
+    <h2 class="section-title">Quienes nos enseñaron <span class="script" style="font-size:1.08em">a amar</span></h2>
+    <p class="section-copy">Con gratitud y cariño, queremos compartir este momento tan especial junto a nuestros padres.</p>
+    <div class="parents-grid">
+      <article class="parent-card reveal"><span class="parent-label">Padres del novio</span><h3>Sergio Choque Condori</h3><span class="and">e</span><h3>Inés Luna Flores</h3></article>
+      <article class="parent-card reveal"><span class="parent-label">Padres de la novia</span><h3>Jaime Vargas Quintanilla</h3><span class="and">y</span><h3>Vicenta Zenteno Vargas</h3></article>
     </div>
   </section>
 
-  <section class="section families" id="familias">
-    <div style="text-align:center" class="reveal"><div class="kicker">Con la bendición de nuestros padres</div><div class="title">El amor que nos enseñó<br><em>a llegar hasta aquí.</em></div></div>
-    <div class="families-grid">
-      <div class="family reveal"><small>Padres del novio</small><h3>Sergio Choque Condori</h3><p>e</p><h3>Inés Luna Flores</h3></div>
-      <div class="family reveal"><small>Padres de la novia</small><h3>Jaime Vargas Quintanilla</h3><p>e</p><h3>Vicenta Zenteno Vargas</h3></div>
-    </div>
-  </section>
-
-  <section class="section gallery card" id="galeria">
-    <div style="text-align:center" class="reveal"><div class="kicker">Nuestros momentos</div><div class="title">Pequeños instantes,<br><em>una gran historia.</em></div><p class="copy">Algunos recuerdos que guardamos con especial cariño.</p></div>
+  <section class="gallery-section section">
+    <p class="section-label">Pequeños instantes, recuerdos eternos</p>
+    <h2 class="section-title">Un poquito de <span class="script" style="font-size:1.12em">nosotros</span></h2>
     <div class="gallery-grid">
-      <div class="gphoto big reveal"><img src="images/portada.jpeg" alt="Rodrigo y Karla al atardecer"></div>
-      <div class="gphoto reveal"><img src="images/historia.jpeg" alt="Rodrigo y Karla juntos"></div>
-      <div class="gphoto reveal"><img src="images/portada.jpeg" alt="Rodrigo y Karla junto al mar"></div>
-    </div>
-    <div class="gallery-note">“Y entre tantas personas en el mundo, nos encontramos.”</div>
-  </section>
-
-  <section class="section music card" id="cancion">
-    <div class="vinyl" id="vinyl"></div>
-    <div class="kicker">Nuestra canción</div>
-    <div class="title" style="margin-bottom:8px">Una melodía que <em>nos representa.</em></div>
-    <div class="song-name">Así Es Nuestro Amor</div>
-    <div class="song-hint">La canción que acompaña nuestra historia.</div>
-    <button class="song-btn" id="songCtrl">Reproducir / pausar</button>
-  </section>
-
-  <section class="section countdown card">
-    <div style="text-align:center" class="reveal"><div class="kicker">Cada día falta menos</div><div class="title">Cuenta regresiva</div></div>
-    <div class="count-grid">
-      <div class="count-cell"><span class="count-num" id="days">000</span><span class="count-label">Días</span></div>
-      <div class="count-cell"><span class="count-num" id="hours">00</span><span class="count-label">Horas</span></div>
-      <div class="count-cell"><span class="count-num" id="mins">00</span><span class="count-label">Minutos</span></div>
-      <div class="count-cell"><span class="count-num" id="secs">00</span><span class="count-label">Segundos</span></div>
+      <figure class="gallery-card reveal"><img src="images/portada.jpeg" alt="Rodrigo y Karla celebrando juntos al atardecer" loading="lazy"><figcaption class="gallery-caption">Nuestro lugar feliz</figcaption></figure>
+      <figure class="gallery-card reveal"><img src="images/historia.jpeg" alt="Rodrigo y Karla en un recuerdo de playa" loading="lazy"><figcaption class="gallery-caption">Tú, yo y todos los días</figcaption></figure>
     </div>
   </section>
 
-  <section class="section rsvp" id="confirmacion">
-    <div class="kicker reveal">Tu presencia lo hará aún más especial</div>
-    <div class="title reveal">¿Nos <em>acompañas?</em></div>
-    <p class="rsvp-copy reveal">Nos encantaría celebrar este día contigo. Confirma tu asistencia y ayúdanos a preparar todo con mucho cariño.</p>
-    <a class="rsvp-btn reveal" target="_blank" href="https://wa.me/?text=Hola%20Rodrigo%20y%20Karla%20%F0%9F%A4%8D%20Quiero%20confirmar%20mi%20asistencia%20a%20su%20boda%20del%2012%20de%20diciembre%20de%202026.%20%F0%9F%A4%8D">Confirmar asistencia</a>
+  <section class="song-section section" id="cancion">
+    <p class="section-label">Una canción que habla por nosotros</p>
+    <h2 class="section-title">Nuestra <span class="script" style="font-size:1.12em">canción</span></h2>
+    <div class="vinyl" aria-hidden="true"></div>
+    <p class="section-copy">Hay melodías que se vuelven hogar porque nos recuerdan a esa persona que elegiríamos una y mil veces.</p>
+    <button class="outline-btn song-button" id="songSectionToggle" type="button">♫ Pausar canción</button>
+    <p class="song-note">“Así Es Nuestro Amor” · para bailar con el corazón</p>
   </section>
 
-  <footer class="section footer">
-    <div class="footer-bg"></div>
-    <div class="footer-inner reveal">
-      <div class="kicker" style="color:#ddcfab">Nuestro para siempre</div>
-      <div class="title">Rodrigo <em>&amp;</em> Karla</div>
-      <div class="footer-date">12 · 12 · 2026</div>
-      <div class="thanks">Gracias por ser parte de nuestra historia.</div>
-      <div class="brand"><span>Diseño &amp; experiencia digital</span><strong>MAIKY TECH</strong><small>Tecnología que simplifica tu trabajo</small></div>
+  <section class="rsvp-section section paper-texture" id="confirmar">
+    <svg class="botanical bottom-right" aria-hidden="true"><use href="#sprig"/></svg>
+    <p class="section-label">Tu presencia es nuestro regalo</p>
+    <h2 class="section-title">¿Nos acompañas?</h2>
+    <div class="rsvp-card reveal">
+      <span class="rsvp-heart" aria-hidden="true">Con mucho amor,</span>
+      <h3>Queremos celebrar contigo</h3>
+      <p>Nos haría inmensamente felices compartir contigo el comienzo de esta nueva etapa. Gracias por ser parte de nuestra historia.</p>
+      <a class="solid-btn" href="https://wa.me/?text=Hola%20Rodrigo%20y%20Karla%20%F0%9F%A4%8D%20Quiero%20confirmar%20mi%20asistencia%20a%20su%20boda%20del%2012%20de%20diciembre%20de%202026." target="_blank" rel="noopener noreferrer">Confirmar asistencia ♡</a>
     </div>
+  </section>
+
+  <footer class="closing paper-texture">
+    <svg class="botanical top-left" aria-hidden="true"><use href="#sprig"/></svg>
+    <figure class="closing-photo"><img src="images/portada.jpeg" alt="Rodrigo y Karla bajo el cielo del atardecer" loading="lazy"></figure>
+    <h2>Rodrigo <span>&</span> Karla</h2>
+    <p>Y así comienza nuestro para siempre.</p>
+    <span class="closing-date">12 · 12 · 2026</span>
   </footer>
-</div>
+  <div class="site-footer">Con amor, Rodrigo & Karla · Diciembre 2026</div>
 </main>
 
+<div id="toast" role="status" aria-live="polite" style="position:fixed;left:50%;bottom:calc(82px + env(safe-area-inset-bottom));transform:translate(-50%,12px);opacity:0;pointer-events:none;z-index:4000;width:min(88vw,400px);padding:13px 17px;background:#263b2e;color:#fffdf6;border:1px solid rgba(217,199,164,.6);box-shadow:0 12px 30px rgba(38,59,46,.2);font-size:.75rem;line-height:1.5;text-align:center;transition:opacity .3s,transform .3s"></div>
 <script>
-const opening=document.getElementById('opening');
-const openBtn=document.getElementById('openBtn');
-const site=document.getElementById('site');
-const music=document.getElementById('music');
-const controls=document.getElementById('controls');
-const musicCtrl=document.getElementById('musicCtrl');
-const topCtrl=document.getElementById('topCtrl');
-const songCtrl=document.getElementById('songCtrl');
-const vinyl=document.getElementById('vinyl');
-let fadeId=null;
+(() => {
+  const opening = document.getElementById('opening');
+  const openButton = document.getElementById('openInvite');
+  const song = document.getElementById('weddingSong');
+  const musicToggle = document.getElementById('musicToggle');
+  const sectionToggle = document.getElementById('songSectionToggle');
+  const toast = document.getElementById('toast');
+  let fadeFrame = null;
+  let toastTimer = null;
+  let opened = false;
 
-function fadeTo(target,duration=8000){
-  if(fadeId) cancelAnimationFrame(fadeId);
-  const from=music.volume,start=performance.now();
-  function step(t){
-    const p=Math.min((t-start)/duration,1);
-    const e=1-Math.pow(1-p,3);
-    music.volume=from+(target-from)*e;
-    if(p<1) fadeId=requestAnimationFrame(step);
+  function showToast(message) {
+    toast.textContent = message;
+    toast.style.opacity = '1';
+    toast.style.transform = 'translate(-50%,0)';
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => {
+      toast.style.opacity = '0';
+      toast.style.transform = 'translate(-50%,12px)';
+    }, 3400);
   }
-  fadeId=requestAnimationFrame(step);
-}
-function setMusicUI(on){
-  musicCtrl.classList.toggle('playing',on);
-  vinyl.classList.toggle('playing',on);
-}
-async function startMusic(){
-  try{
-    music.pause(); music.currentTime=0; music.muted=false; music.volume=0.001;
-    await music.play();
-    setMusicUI(true); fadeTo(.82,9000);
-  }catch(e){console.warn(e);}
-}
-openBtn.addEventListener('click',()=>{
-  opening.classList.add('out');
-  document.body.classList.remove('locked');
-  site.classList.add('ready');
-  controls.classList.add('visible');
-  startMusic();
-  setTimeout(()=>document.querySelectorAll('.reveal').forEach(el=>el.classList.add('show')),160);
-});
-musicCtrl.addEventListener('click',async()=>{
-  if(music.paused){ try{music.volume=.18;await music.play();setMusicUI(true);fadeTo(.82,1200)}catch(e){console.warn(e)} }
-  else{music.pause();setMusicUI(false)}
-});
-songCtrl.addEventListener('click',async()=>{
-  if(music.paused){try{music.volume=Math.max(music.volume,.18);await music.play();setMusicUI(true);fadeTo(.82,1200)}catch(e){console.warn(e)}}else{music.pause();setMusicUI(false)}
-});
-topCtrl.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
-const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('show');observer.unobserve(e.target)}})},{threshold:.13});
-document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
-const wedding=new Date('2026-12-12T13:00:00-04:00');
-function countdown(){
-  const d= wedding-new Date();
-  const set=(id,n)=>document.getElementById(id).textContent=n;
-  if(d<=0){set('days','000');set('hours','00');set('mins','00');set('secs','00');return}
-  set('days',String(Math.floor(d/86400000)).padStart(3,'0'));
-  set('hours',String(Math.floor(d/3600000)%24).padStart(2,'0'));
-  set('mins',String(Math.floor(d/60000)%60).padStart(2,'0'));
-  set('secs',String(Math.floor(d/1000)%60).padStart(2,'0'));
-}
-countdown();setInterval(countdown,1000);
+
+  function setMusicUI(playing) {
+    musicToggle.classList.toggle('playing', playing);
+    musicToggle.setAttribute('aria-label', playing ? 'Pausar nuestra canción' : 'Reproducir nuestra canción');
+    sectionToggle.textContent = playing ? 'Ⅱ Pausar canción' : '♫ Reproducir canción';
+  }
+
+  function fadeTo(target, duration) {
+    if (fadeFrame) cancelAnimationFrame(fadeFrame);
+    const startVolume = song.volume;
+    const startTime = performance.now();
+    const tick = (now) => {
+      const progress = Math.min(1, (now - startTime) / duration);
+      const eased = progress * progress * (3 - 2 * progress);
+      song.volume = Math.max(0, Math.min(1, startVolume + (target - startVolume) * eased));
+      if (progress < 1) fadeFrame = requestAnimationFrame(tick);
+      else { song.volume = target; fadeFrame = null; }
+    };
+    fadeFrame = requestAnimationFrame(tick);
+  }
+
+  async function startMusicProgressively() {
+    if (fadeFrame) cancelAnimationFrame(fadeFrame);
+    song.volume = 0;
+    song.muted = false;
+    try {
+      const playPromise = song.play();
+      if (playPromise && typeof playPromise.then === 'function') await playPromise;
+      setMusicUI(true);
+      fadeTo(.82, 9000);
+    } catch (error) {
+      console.warn('No se pudo iniciar la música:', error);
+      setMusicUI(false);
+      showToast('La invitación se abrió. Toca el botón de música para intentarlo de nuevo.');
+    }
+  }
+
+  async function resumeMusic() {
+    song.volume = 0;
+    song.muted = false;
+    try {
+      const playPromise = song.play();
+      if (playPromise && typeof playPromise.then === 'function') await playPromise;
+      setMusicUI(true);
+      fadeTo(.82, 1800);
+    } catch (error) {
+      console.warn('No se pudo reproducir la música:', error);
+      showToast('No se pudo iniciar la canción. Comprueba el volumen de tu dispositivo.');
+    }
+  }
+
+  async function toggleMusic() {
+    if (song.paused) {
+      await resumeMusic();
+    } else {
+      if (fadeFrame) cancelAnimationFrame(fadeFrame);
+      song.pause();
+      setMusicUI(false);
+    }
+  }
+
+  openButton.addEventListener('click', async () => {
+    if (opened) return;
+    opened = true;
+    // Start playback synchronously from the user's first gesture, at zero volume.
+    song.volume = 0;
+    song.muted = false;
+    opening.classList.add('closed');
+    musicToggle.classList.add('visible');
+    await startMusicProgressively();
+    document.querySelectorAll('.reveal').forEach((el) => { if (el.getBoundingClientRect().top < innerHeight * .9) el.classList.add('in-view'); });
+  });
+
+  musicToggle.addEventListener('click', toggleMusic);
+  sectionToggle.addEventListener('click', toggleMusic);
+  song.addEventListener('play', () => setMusicUI(true));
+  song.addEventListener('pause', () => setMusicUI(false));
+  song.addEventListener('error', () => console.warn('No se pudo cargar audio/nuestra-cancion.mp3'));
+
+  // Subtle reveals: content remains visible if JavaScript or IntersectionObserver is unavailable.
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach((el) => {
+      el.classList.add('will-reveal');
+      observer.observe(el);
+    });
+  }
+
+  // Download a calendar event for the wedding day. The date highlighted above is Saturday, Dec 12, 2026.
+  document.getElementById('saveCalendar').addEventListener('click', () => {
+    const ics = [
+      'BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//Rodrigo y Karla//Invitacion de boda//ES','CALSCALE:GREGORIAN','METHOD:PUBLISH',
+      'BEGIN:VEVENT','UID:rodrigo-karla-20261212@invitacion.local','DTSTAMP:20261008T120000Z','DTSTART:20261212T170000Z','DTEND:20261213T020000Z',
+      'SUMMARY:Boda de Rodrigo y Karla','DESCRIPTION:Ceremonia religiosa a las 13:00 en la Capilla Católica Virgen de Guadalupe\, Km 15. Recepción a las 16:00 en Casa Quinta Reinaga\, Km 20\, Carretera Antigua a Cochabamba.',
+      'LOCATION:Capilla Virgen de Guadalupe Km 15 / Casa Quinta Reinaga Km 20','END:VEVENT','END:VCALENDAR'
+    ].join('\r\n');
+    const blob = new Blob([ics], { type: 'text/calendar;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = 'boda-rodrigo-karla-12-diciembre-2026.ics';
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+    showToast('¡Fecha guardada! Abre el archivo descargado para añadir la boda a tu calendario.');
+  });
+
+  // Live countdown to the religious ceremony (Bolivia UTC-4).
+  function updateCountdown() {
+    const target = new Date('2026-12-12T13:00:00-04:00').getTime();
+    const diff = target - Date.now();
+    const ids = ['countDays','countHours','countMinutes','countSeconds'];
+    if (diff <= 0) {
+      ['00','00','00','00'].forEach((value, i) => { document.getElementById(ids[i]).textContent = value; });
+      document.getElementById('countMessage').textContent = '¡Hoy comienza nuestro para siempre!';
+      return;
+    }
+    const values = [
+      Math.floor(diff / 86400000),
+      Math.floor((diff % 86400000) / 3600000),
+      Math.floor((diff % 3600000) / 60000),
+      Math.floor((diff % 60000) / 1000)
+    ];
+    values.forEach((value, i) => { document.getElementById(ids[i]).textContent = i === 0 ? String(value).padStart(2,'0') : String(value).padStart(2,'0'); });
+    document.getElementById('countMessage').textContent = 'Hasta el sábado 12 de diciembre de 2026';
+  }
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+})();
 </script>
 </body>
 </html>
+
